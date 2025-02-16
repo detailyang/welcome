@@ -362,6 +362,14 @@ A get command that retrieves a value from a mapping, e.g. `get accounts[r0] into
 
 A get command that uses the provided default in case of failure, e.g. `get.or_use accounts[r0] r1 into r2;`.
 
+#### Remove
+
+A remove command that removes a key-value pair from a mapping, e.g. `remove accounts[r0];`.
+
+#### Set
+
+A set command that sets a value in a mapping, e.g. `set r0 into accounts[r0];`.
+
 ```aleo showLineNumbers
 finalize transfer_public:
     // Input the sender.
@@ -386,18 +394,35 @@ finalize transfer_public:
     set r6 into account[r1];
 ```
 
-#### Set
-
-A set command that sets a value in a mapping, e.g. `set r0 into accounts[r0];`.
-
-#### Remove
-
-A remove command that removes a key-value pair from a mapping, e.g. `remove accounts[r0];`.
-
 ### Finalize
 
 A finalize is declared as `finalize {name}:`.  
 A finalize must immediately follow a [function](#function), and must have the same name;
+
+:::note
+Previously, a `finalize` function was executed on chain after the zero-knowledge proof of the execution of the associated function is verified;
+Upon success of the finalize function, the program logic was executed.  
+Upon failure of the finalize function, the program logic was reverted.  
+:::
+
+### Futures
+
+A future is equivalent to the call graph of the on-chain execution and is explicitly used when finalizing an execution.
+Instead of constructing the call graph implicitly from the code, the transition/circuit explicitly outputs a future,
+specifying which code blocks to run on-chain and how to run them.
+
+#### future type
+A user can declare a future type by specifying a `Locator` followed by the tag `.future`.
+For example, `credits.aleo/mint_public.future`.
+A `function` can only output a future and a finalize block can only take a future in as input.
+A `closure` cannot output a future or take a future in as input.
+
+#### async call
+A user can make an asynchronous call to the finalize block via the `async` keyword.
+For example, `async mint_public r0 r1 into r2;`.
+Note that the associated function must be specified.
+This operation produces a `Future` as output.
+`async` takes the place of the `finalize` command, which was allowed in the body of a function after the output statements.
 
 ```aleo showLineNumbers
 // The `transfer_public_to_private` function turns a specified amount
@@ -441,30 +466,6 @@ finalize transfer_public_to_private:
     set r3 into account[r0];
 ```
 
-:::note
-Previously, a `finalize` function was executed on chain after the zero-knowledge proof of the execution of the associated function is verified;
-Upon success of the finalize function, the program logic was executed.  
-Upon failure of the finalize function, the program logic was reverted.  
-:::
-
-### Futures
-
-A future is equivalent to the call graph of the on-chain execution and is explicitly used when finalizing an execution.
-Instead of constructing the call graph implicitly from the code, the transition/circuit explicitly outputs a future,
-specifying which code blocks to run on-chain and how to run them.
-
-#### future type
-A user can declare a future type by specifying a `Locator` followed by the tag `.future`.
-For example, `credits.aleo/mint_public.future`.
-A `function` can only output a future and a finalize block can only take a future in as input.
-A `closure` cannot output a future or take a future in as input.
-
-#### async call
-A user can make an asynchronous call to the finalize block via the `async` keyword.
-For example, `async mint_public r0 r1 into r2;`.
-Note that the associated function must be specified.
-This operation produces a `Future` as output.
-`async` takes the place of the `finalize` command, which was allowed in the body of a function after the output statements.
 
 #### await command
 A user can evaluate a future inside of a finalize block using the `await` command. 
