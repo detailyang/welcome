@@ -15,7 +15,8 @@ This will create **foo** directory and the files with the basic structure of the
 
 - **README.md** having the skeleton of a README with instructions on how to compile.
 - **main.aleo** the main file of the source code.
-- **program.json** containing the identification of the project in JSON format. Particularly, a dev address and its private key for the program.
+- **.env** stores the environment variable for the program, including the <b>NETWORK</b> and <b>PRIVATE_KEY</b> which is auto-generated when creating a new leo program
+- **program.json** containing the identification of the project in JSON format and includes additional dependencies if added
 
 The main.aleo file should have contents like this:
 
@@ -39,11 +40,10 @@ snarkvm run hello 2u32 3u32
 You will see output like this:
 
 ```bash
- • Loaded universal setup (in 1478 ms)
 
 ⛓  Constraints
 
- •  'foo.aleo/hello' - 35 constraints (called 1 time)
+ •  'foo.aleo/hello' - 33 constraints (called 1 time)
 
 ➡️  Output
 
@@ -65,11 +65,10 @@ snarkvm execute hello 2u32 3u32
 When the execution is finished, you should see the following output:
 
 ```bash
- • Loaded universal setup (in 1478 ms)
 
 ⛓  Constraints
 
- •  'foo.aleo/hello' - 35 constraints (called 1 time)
+ •  'foo.aleo/hello' - 33 constraints (called 1 time)
 
 ➡️  Output
 
@@ -213,10 +212,10 @@ Now, let's run it. In this case, the only new thing you need to know is that str
 "{a0: 1u32, a1: 2u32, a2: 3u32}"
 ```
 
-Now we can execute the `aleo run` command. We will clean the project to pick up the new code:
+Now we can execute the `snarkvm run` command. We will clean the project to pick up the new code:
 
 ```bash
-aleo clean && aleo run sum_one_to_array3 "{a0: 0u32, a1: 1u32, a2: 2u32}"
+snarkvm clean && snarkvm run sum_one_to_array3 "{a0: 0u32, a1: 1u32, a2: 2u32}"
 ```
 
 And we get the new `array3` element as output:
@@ -233,15 +232,14 @@ And we get the new `array3` element as output:
 
 ### 4.3 Records
 
-A record is a fundamental data structure for encoding user assets and application state. Records are very similar to structs, but they have two non-optional components:
+A record is a fundamental data structure for encoding user assets and application state. Records are very similar to structs, but they have one required component:
 
 ```aleo showLineNumbers
 record token:
     owner as address.private
-    microcredits as u64.private
 ```
 
-the `owner` refers to the Aleo address that owns the record and `microcredits` is the amount of credits that the record has to spend.
+The `owner` refers to the Aleo address that owns the record.
 
 Records are important because they represent the basic Aleo structure to handle state in your application.
 
@@ -251,7 +249,7 @@ You can find your development application address inside the `.env` file:
 
 ```json
 {
-    NETWORK=testnet3
+    NETWORK=testnet
     PRIVATE_KEY=APrivateKey1zkpFsQNXJwdvjKs9bRsM91KcwJW1gW4CDtF3FJbgVBAvPds
 }
 ```
@@ -268,10 +266,16 @@ Consider this program:
 ```aleo showLineNumbers
 // The 'foo.aleo' program.
 program foo.aleo;
+
 record token:
     owner as address.private;
-    microcredits as u64.private;
     amount as u64.private;
+
+function mint:
+    input r0 as u64.private;
+    cast self.signer r0 into r1 as token.record;
+    output r1 as token.record;
+
 function transfer_amount:
     //  sender token record
     input r0 as token.record;
@@ -284,24 +288,23 @@ function transfer_amount:
     // final balance of receiver
     add 0u64 r2 into r4;
     // sender token record after the transfer
-    cast r0.owner r0.microcredits r3 into r5 as token.record;
+    cast r0.owner r3 into r5 as token.record;
     // receiver token record after the transfer
-    cast r1 0u64 r4 into r6 as token.record;
+    cast r1 r4 into r6 as token.record;
     // sender new token record
     output r5 as token.record;
     // receiver new token record
     output r6 as token.record;
 ```
-First, we define our own record data type called `token`, that has the required parameter `owner`, optional parameter `microcredits`, and a user-defined parameter called `amount`, representing the amount of tokens we have.
+First, we define our own record data type called `token`, that has the required parameter `owner` and a user-defined parameter called `amount`, representing the amount of tokens we have.
 
-This `transfer_amount` function receives 3 input parameters (`sender` record, `receiver` record and `amount`) and stores them in 3 registers (`r0`, `r1` and `r2`). After that, it computes the final balance for both of them and stores it in `r3` and `r4` (using **sub** and **add** instructions to compute the subtraction and addition respectively). With those final amounts, it creates the output records for sender and receiver, storing them in `r5` and `r6` . Finally, both records are sent out of the function with the **output** instruction.
+This `transfer_amount` function receives 3 input parameters (`sender` record, `receiver` record and `amount`) and stores them in 3 registers (`r0`, `r1` and `r2`). After that, it computes the final balance for both of them and stores it in `r3` and `r4` (using **sub** and **add** instructions to compute the subtraction and addition respectively). With those final amounts, it creates the output records for sender and receiver, storing them in `r5` and `r6`. Finally, both records are sent out of the function with the **output** instruction.
 
 To run this function, the first parameter is the input record of the program. The format of this parameter is the same as for struct types:
 
 ```json
 {
   owner: aleo1x5nz5u4j50w482t5xtqc3jdwly9s8saaxlgjz0wvmuzmxv2l5q9qmypx09.private,
-  microcredits: 0u64.private,
   amount: 50u64.private
 }
 ```
@@ -309,39 +312,38 @@ To run this function, the first parameter is the input record of the program. Th
 Where:
 
 - owner: the public address of the program, as found in the `PRIVATE_KEY` of the `.env` file.
-- microcredits: the amount of credits that the record owns.
 - other parameters: depending on the program itself (in this example, we used the parameter _amount_ with the value 50).
 
 Let's run the `transfer_amount` function (if you are following along, remember to use the address found in the program.json for the owner field):
 
 ``` bash
-aleo clean && aleo run transfer_amount "{
+snarkvm clean && snarkvm run transfer_amount "{
 owner: aleo1x5nz5u4j50w482t5xtqc3jdwly9s8saaxlgjz0wvmuzmxv2l5q9qmypx09.private,
-microcredits: 0u64.private,
-amount: 50u64.private
+amount: 50u64.private,
+_nonce: 0group.public
 }" aleo1h3gu7fky36y8r7v2x9phc434fgf20g8qd7c7u45v269jfw6vmugqjegcvp 10u64
 ```
 
 We get the following output records:
 
 ```bash
-🚀 Executing 'foo.aleo/transfer_amount'...
- • Calling 'foo.aleo/transfer_amount'...
- • Executed 'transfer_amount' (in 3520 ms)
+
+⛓  Constraints
+
+ •  'foo.aleo/transfer_amount' - 4,172 constraints (called 1 time)
+ 
 ➡️  Outputs
  • {
   owner: aleo1x5nz5u4j50w482t5xtqc3jdwly9s8saaxlgjz0wvmuzmxv2l5q9qmypx09.private,
-  microcredits: 0u64.private,
   amount: 40u64.private
   _nonce: 2293253577170800572742339369209137467208538700597121244293392265726446806023group.public
 }
  • {
   owner: aleo1h3gu7fky36y8r7v2x9phc434fgf20g8qd7c7u45v269jfw6vmugqjegcvp.private,
-  microcredits: 0u64.private,
   amount: 10u64.private
   _nonce: 2323253577170856894742339369235137467208538700597121244293392765726742543235group.public
 }
-✅ Executed 'foo.aleo/transfer_amount' (in "[...]/foo")
+✅ Finished 'foo.aleo/transfer_amount' (in "[...]/foo")
 ```
 
 And that's it. You have transferred your first owner-defined tokens in Aleo!

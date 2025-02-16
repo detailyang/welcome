@@ -57,24 +57,30 @@ The following lists show the standard and cryptographic opcodes supported by Ale
 | [xor](#xor)                  | XOR operation                                         |
 
 ## Table of Cryptographic Opcodes
-| Name                                               | Description                       |
-|----------------------------------------------------|:----------------------------------|
-| [commit.bhp256](#commitbhp256)                     | 256-bit input BHP commitment      |
-| [commit.bhp512](#commitbhp512)                     | 512-bit input BHP commitment      |
-| [commit.bhp768](#commitbhp768)                     | 768-bit input BHP commitment      |
-| [commit.bhp1024](#commitbhp1024)                   | 1024-bit input BHP commitment     |
-| [commit.ped64](#commitped64)                       | 64-bit input Pedersen commitment  |
-| [commit.ped128](#commitped128)                     | 128-bit input Pedersen commitment |
-| [hash.bhp256](#hashbhp256)                         | 256-bit input BHP hash            |
-| [hash.bhp512](#hashbhp512)                         | 512-bit input BHP hash            |
-| [hash.bhp768](#hashbhp768)                         | 768-bit input BHP hash            |
-| [hash.bhp1024](#hashbhp1024)                       | 1024-bit input BHP hash           |
-| [hash.ped64](#hashped64)                           | 64-bit input Pedersen hash        |
-| [hash.ped128](#hashped128)                         | 128-bit input Pedersen hash       |
-| [hash.psd2](#hashpsd2)                             | Poseidon hash with input rate 2   |
-| [hash.psd4](#hashpsd4)                             | Poseidon hash with input rate 4   |
-| [hash.psd8](#hashpsd8)                             | Poseidon hash with input rate 8   |
-| [sign.verify](#signverify)                         | Verify a Schnorr signature        |
+| Name                             | Description                       |
+|----------------------------------|:----------------------------------|
+| [commit.bhp256](#commitbhp256)   | 256-bit input BHP commitment      |
+| [commit.bhp512](#commitbhp512)   | 512-bit input BHP commitment      |
+| [commit.bhp768](#commitbhp768)   | 768-bit input BHP commitment      |
+| [commit.bhp1024](#commitbhp1024) | 1024-bit input BHP commitment     |
+| [commit.ped64](#commitped64)     | 64-bit input Pedersen commitment  |
+| [commit.ped128](#commitped128)   | 128-bit input Pedersen commitment |
+| [hash.bhp256](#hashbhp256)       | 256-bit input BHP hash            |
+| [hash.bhp512](#hashbhp512)       | 512-bit input BHP hash            |
+| [hash.bhp768](#hashbhp768)       | 768-bit input BHP hash            |
+| [hash.bhp1024](#hashbhp1024)     | 1024-bit input BHP hash           |
+| [hash.keccak256](#hashkeccak256) | 256-bit input Keccak hash         |
+| [hash.keccak384](#hashkeccak384) | 384-bit input Keccak hash         |
+| [hash.keccak512](#hashkeccak512) | 512-bit input Keccak hash         |
+| [hash.ped64](#hashped64)         | 64-bit input Pedersen hash        |
+| [hash.ped128](#hashped128)       | 128-bit input Pedersen hash       |
+| [hash.psd2](#hashpsd2)           | Poseidon hash with input rate 2   |
+| [hash.psd4](#hashpsd4)           | Poseidon hash with input rate 4   |
+| [hash.psd8](#hashpsd8)           | Poseidon hash with input rate 8   |
+| [hash.sha3_256](#hashsha3_256)   | 256-bit input SHA3 hash           |
+| [hash.sha3_384](#hashsha3_384)   | 384-bit input SHA3 hash           |
+| [hash.sha3_512](#hashsha3_512)   | 512-bit input SHA3 hash           |
+| [sign.verify](#signverify)       | Verify a Schnorr signature        |
 
 ## Specification
 
@@ -214,25 +220,26 @@ Checks whether `first` and `second` are equal, halting if they are not equal.
 
 #### Supported Types
 
-| First     | Second    |
-|-----------|-----------|
-| `Address` | `Address` |
-| `Boolean` | `Boolean` |
-| `Field`   | `Field`   |
-| `Group`   | `Group`   |
-| `I8`      | `I8`      |
-| `I16`     | `I16`     |
-| `I32`     | `I32`     |
-| `I64`     | `I64`     |
-| `I128`    | `I128`    |
-| `U8`      | `U8`      |
-| `U16`     | `U16`     |
-| `U32`     | `U32`     |
-| `U64`     | `U64`     |
-| `U128`    | `U128`    |
-| `Scalar`  | `Scalar`  |
-| `Struct`  | `Struct`  |
-| `Record`  | `Record`  |
+| First       | Second      |
+|-------------|-------------|
+| `Address`   | `Address`   |
+| `Boolean`   | `Boolean`   |
+| `Field`     | `Field`     |
+| `Group`     | `Group`     |
+| `I8`        | `I8`        |
+| `I16`       | `I16`       |
+| `I32`       | `I32`       |
+| `I64`       | `I64`       |
+| `I128`      | `I128`      |
+| `U8`        | `U8`        |
+| `U16`       | `U16`       |
+| `U32`       | `U32`       |
+| `U64`       | `U64`       |
+| `U128`      | `U128`      |
+| `Scalar`    | `Scalar`    |
+| `Signature` | `Signature` |
+| `Struct`    | `Struct`    |
+| `Record`    | `Record`    |
 
 ***
 
@@ -246,25 +253,26 @@ Checks whether `first` and `second` are not equal, halting if they are equal.
 
 #### Supported Types
 
-| First     | Second    |
-|-----------|-----------|
-| `Address` | `Address` |
-| `Boolean` | `Boolean` |
-| `Field`   | `Field`   |
-| `Group`   | `Group`   |
-| `I8`      | `I8`      |
-| `I16`     | `I16`     |
-| `I32`     | `I32`     |
-| `I64`     | `I64`     |
-| `I128`    | `I128`    |
-| `U8`      | `U8`      |
-| `U16`     | `U16`     |
-| `U32`     | `U32`     |
-| `U64`     | `U64`     |
-| `U128`    | `U128`    |
-| `Scalar`  | `Scalar`  |
-| `Struct`  | `Struct`  |
-| `Record`  | `Record`  |
+| First       | Second      |
+|-------------|-------------|
+| `Address`   | `Address`   |
+| `Boolean`   | `Boolean`   |
+| `Field`     | `Field`     |
+| `Group`     | `Group`     |
+| `I8`        | `I8`        |
+| `I16`       | `I16`       |
+| `I32`       | `I32`       |
+| `I64`       | `I64`       |
+| `I128`      | `I128`      |
+| `U8`        | `U8`        |
+| `U16`       | `U16`       |
+| `U32`       | `U32`       |
+| `U64`       | `U64`       |
+| `U128`      | `U128`      |
+| `Scalar`    | `Scalar`    |
+| `Signature` | `Signature` |
+| `Struct`    | `Struct`    |
+| `Record`    | `Record`    |
 
 ***
 
@@ -276,6 +284,8 @@ Checks whether `first` and `second` are not equal, halting if they are equal.
 
 Returns the height of the block within the finalize scope.
 Currently, block height is the only supported property.
+
+#### Example Usage
 
 ```aleo
 assert.eq block.height 1337;
@@ -289,8 +299,7 @@ assert.eq block.height 1337;
 
 #### Description
 
-The `branch.eq` command, e.g. `branch.eq <first> <second> to <destination>`, which branches execution to the [position](#position) indicated by `destination` if `first` and `second` are equal.
-
+The command `branch.eq <first> <second> to <destination>` branches execution to the [position](#position) indicated by `destination` if `first` and `second` are equal.  This command is restricted to the finalize scope, and the destination must follow the command.  Backward branches are not currently supported.
 
 | First     | Second    | Destination |
 |-----------|-----------|-------------|
@@ -320,7 +329,7 @@ The `branch.eq` command, e.g. `branch.eq <first> <second> to <destination>`, whi
 
 #### Description
 
-The `branch.neq` command, e.g. `branch.neq <first> <second> to <destination>`, which branches execution to the [position](#position) indicated by `destination` if `first` and `second` are equal.
+The command `branch.neq <first> <second> to <destination>` branches execution to the [position](#position) indicated by `destination` if `first` and `second` are not equal.  This command is restricted to the finalize scope, and the destination must follow the command.  Backward branches are not currently supported.
 
 
 | First     | Second    | Destination |
@@ -349,6 +358,13 @@ The `branch.neq` command, e.g. `branch.neq <first> <second> to <destination>`, w
 
 [Back to Top](#table-of-standard-opcodes)
 
+#### Description
+
+Enables casting between different literals and can be used to construct structs and records.
+In the case of literals, `cast` checks that the source data type can fit into target data type.
+
+#### Example Usage
+
 ```aleo
 struct foo:
     a as address;
@@ -359,40 +375,24 @@ function hello:
     input r1 as boolean.private;
     input r2 as group.private;
     cast r0 r1 into r3 as foo;
-    cast r2 into r4 as group.x;
-    cast r2 into r5 as group.y;
-    cast r2 into r6 as field;
+    cast r0 into r4 as group;
+    cast r2 into r5 as group.x;
+    cast r2 into r6 as group.y;
+    cast r2 into r7 as field;
+    cast r1 r1 r1 r1 into r7 as [boolean; 4u32];
+    cast r7 into r8 as [[boolean; 4u32]; 1u32];
 ```
-
-#### Description
-
-Enables casting between different literals and can be used to construct structs and records.
-
-#### Supported Types
-
-| First     | Second           |
-|-----------|------------------|
-| `Address` | `Address`        |
-| `Boolean` | `Boolean`        |
-| `Field`   | `Field`          |
-| `Group`   | `Group`, `Field` |
-| `I8`      | `I8`             |
-| `I16`     | `I16`            |
-| `I32`     | `I32`            |
-| `I64`     | `I64`            |
-| `I128`    | `I128`           |
-| `U8`      | `U8`             |
-| `U16`     | `U16`            |
-| `U32`     | `U32`            |
-| `U64`     | `U64`            |
-| `U128`    | `U128`           |
-| `Scalar`  | `Scalar`         |
-
-***
 
 ### `cast.lossy`
 
 [Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Enables casting between different literals.
+`cast.lossy` performs a lossy operation when the source data type cannot fit into the target data type.
+
+#### Example Usage
 
 ```aleo
 input r0 as field.private;
@@ -400,31 +400,6 @@ cast r0 into r1 as group;
 cast r0 into r2 as u8;
 cast.lossy r0 into r3 as u8; // The bottom 8 bits of the r0 are extracted into a u8 and placed into r3
 ```
-
-#### Description
-
-Perform casting with lossy truncation.
-
-#### Supported Types
-
-| First     | Second    |
-|-----------|-----------|
-| `Address` | `Address` |
-| `Boolean` | `Boolean` |
-| `Field`   | `Field`   |
-| `Group`   | `Group`   |
-| `I8`      | `I8`      |
-| `I16`     | `I16`     |
-| `I32`     | `I32`     |
-| `I64`     | `I64`     |
-| `I128`    | `I128`    |
-| `U8`      | `U8`      |
-| `U16`     | `U16`     |
-| `U32`     | `U32`     |
-| `U64`     | `U64`     |
-| `U128`    | `U128`    |
-| `Scalar`  | `Scalar`  |
-***
 
 ### `commit.bhp256`
 
@@ -620,7 +595,6 @@ Divides `first` by `second`, storing the outcome in `destination`. Halts on divi
 
 For integer types, this operation performs truncated division. Furthermore, a constraint is added to check for underflow. This underflow happens when dividing the minimum value of a signed integer type by `-1`. For example, `div -128i8 -1i8` would result in underflow, since `128` cannot be represented as an `i8`.
 
-
 For cases where wrapping semantics are needed for integer types, see the [div.w](#div.w) instruction.
 
 #### Supported Types
@@ -673,7 +647,6 @@ Divides `first` by `second`, wrapping around at the boundary of the type, and st
 #### Description
 
 Doubles the input, storing the outcome in `destination`.
-
 
 #### Supported Types
 
@@ -870,6 +843,99 @@ The instruction will halt if the given input is smaller than 171 bits.
 
 ***
 
+### `hash.keccak256`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Performs a Keccak hash on `first`, storing a 256-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
+### `hash.keccak384`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Performs a Keccak hash on `first`, storing a 384-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
+### `hash.keccak512`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Performs a Keccak hash on `first`, storing a 512-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
 ### `hash.ped64`
 
 [Back to Top](#table-of-standard-opcodes)
@@ -1015,6 +1081,98 @@ Calculates a Poseidon hash with an input rate of 8, from an input in `first`, st
 
 ***
 
+### `hash.sha3_256`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Calculates a SHA3-256 hash, from an input in `first`, storing the 256-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
+### `hash.sha3_384`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Calculates a SHA3-384 hash, from an input in `first`, storing the 384-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
+### `hash.sha3_512`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Calculates a SHA3-512 hash, from an input in `first`, storing the 512-bit digest in `destination`. The produced hash will always be an arithmetic (`U8`, `U16`, `U32`, `U64`, `U128`, `I8`, `I16`, `I32`,`I64`,`I128`, `Field`, `Group`, or `Scalar`) or `Address` value, as specified via `as` at the end of the instruction.
+
+#### Supported Types
+
+| First     | Destination                                                                                               |
+|-----------|:----------------------------------------------------------------------------------------------------------|
+| `Address` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Boolean` | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Field`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Group`   | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `I128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U8`      | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U16`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U32`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U64`     | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `U128`    | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Scalar`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+| `Struct`  | `Address`, `Field`, `Group`, `Scalar`, `I8`, `I16`, `I32`,`I64`,`I128`, `U8`, `U16`, `U32`, `U64`, `U128` |
+
+***
+
 ### `inv`
 
 [Back to Top](#table-of-standard-opcodes)
@@ -1041,25 +1199,26 @@ Compares `first` and `second`, storing the result in `destination`.
 
 #### Supported Types
 
-| First     | Second    | Destination |
-|-----------|-----------|-------------|
-| `Address` | `Address` | `Boolean`   |
-| `Boolean` | `Boolean` | `Boolean`   |
-| `Field`   | `Field`   | `Boolean`   |
-| `Group`   | `Group`   | `Boolean`   |
-| `I8`      | `I8`      | `Boolean`   |
-| `I16`     | `I16`     | `Boolean`   |
-| `I32`     | `I32`     | `Boolean`   |
-| `I64`     | `I64`     | `Boolean`   |
-| `I128`    | `I128`    | `Boolean`   |
-| `U8`      | `U8`      | `Boolean`   |
-| `U16`     | `U16`     | `Boolean`   |
-| `U32`     | `U32`     | `Boolean`   |
-| `U64`     | `U64`     | `Boolean`   |
-| `U128`    | `U128`    | `Boolean`   |
-| `Scalar`  | `Scalar`  | `Boolean`   |
-| `Struct`  | `Struct`  | `Boolean`   |
-| `Record`  | `Record`  | `Boolean`   |
+| First       | Second      | Destination |
+|-------------|-------------|-------------|
+| `Address`   | `Address`   | `Boolean`   |
+| `Boolean`   | `Boolean`   | `Boolean`   |
+| `Field`     | `Field`     | `Boolean`   |
+| `Group`     | `Group`     | `Boolean`   |
+| `I8`        | `I8`        | `Boolean`   |
+| `I16`       | `I16`       | `Boolean`   |
+| `I32`       | `I32`       | `Boolean`   |
+| `I64`       | `I64`       | `Boolean`   |
+| `I128`      | `I128`      | `Boolean`   |
+| `U8`        | `U8`        | `Boolean`   |
+| `U16`       | `U16`       | `Boolean`   |
+| `U32`       | `U32`       | `Boolean`   |
+| `U64`       | `U64`       | `Boolean`   |
+| `U128`      | `U128`      | `Boolean`   |
+| `Scalar`    | `Scalar`    | `Boolean`   |
+| `Signature` | `Signature` | `Boolean`   |
+| `Struct`    | `Struct`    | `Boolean`   |
+| `Record`    | `Record`    | `Boolean`   |
 
 ***
 
@@ -1073,25 +1232,26 @@ Returns true if `first` is not equal to `second`, storing the result in `destina
 
 #### Supported Types
 
-| First     | Second    | Destination |
-|-----------|-----------|-------------|
-| `Address` | `Address` | `Boolean`   |
-| `Boolean` | `Boolean` | `Boolean`   |
-| `Field`   | `Field`   | `Boolean`   |
-| `Group`   | `Group`   | `Boolean`   |
-| `I8`      | `I8`      | `Boolean`   |
-| `I16`     | `I16`     | `Boolean`   |
-| `I32`     | `I32`     | `Boolean`   |
-| `I64`     | `I64`     | `Boolean`   |
-| `I128`    | `I128`    | `Boolean`   |
-| `U8`      | `U8`      | `Boolean`   |
-| `U16`     | `U16`     | `Boolean`   |
-| `U32`     | `U32`     | `Boolean`   |
-| `U64`     | `U64`     | `Boolean`   |
-| `U128`    | `U128`    | `Boolean`   |
-| `Scalar`  | `Scalar`  | `Boolean`   |
-| `Struct`  | `Struct`  | `Boolean`   |
-| `Record`  | `Record`  | `Boolean`   |
+| First       | Second      | Destination |
+|-------------|-------------|-------------|
+| `Address`   | `Address`   | `Boolean`   |
+| `Boolean`   | `Boolean`   | `Boolean`   |
+| `Field`     | `Field`     | `Boolean`   |
+| `Group`     | `Group`     | `Boolean`   |
+| `I8`        | `I8`        | `Boolean`   |
+| `I16`       | `I16`       | `Boolean`   |
+| `I32`       | `I32`       | `Boolean`   |
+| `I64`       | `I64`       | `Boolean`   |
+| `I128`      | `I128`      | `Boolean`   |
+| `U8`        | `U8`        | `Boolean`   |
+| `U16`       | `U16`       | `Boolean`   |
+| `U32`       | `U32`       | `Boolean`   |
+| `U64`       | `U64`       | `Boolean`   |
+| `U128`      | `U128`      | `Boolean`   |
+| `Scalar`    | `Scalar`    | `Boolean`   |
+| `Signature` | `Signature` | `Boolean`   |
+| `Struct`    | `Struct`    | `Boolean`   |
+| `Record`    | `Record`    | `Boolean`   |
 
 ***
 
@@ -1119,7 +1279,6 @@ Checks if `first` is less than `second`, storing the outcome in `destination`.
 | `U64`    | `U64`    | `Boolean`   |
 | `U128`   | `U128`   | `Boolean`   |
 | `Scalar` | `Scalar` | `Boolean`   |
-
 
 ***
 
@@ -1405,9 +1564,10 @@ Raises `first` to the power of `second`, wrapping around at the boundary of the 
 
 ### `rand.chacha`
 
-#### Description 
+#### Description
 
 The `rand.chacha` opcode is used to generate random values within the `finalize` scope. It supports a wide range of types for the random value.
+
 #### Example Usage
 
 ```aleo
@@ -1708,22 +1868,23 @@ Example: `ternary r0 r1 r2 into r3`, where `r0` is the condition, `r1` is first,
 
 #### Supported Types
 
-| Condition | First     | Second    | Destination |
-|-----------|-----------|-----------|-------------|
-| `Boolean` | `Boolean` | `Boolean` | `Boolean`   |
-| `Boolean` | `Field`   | `Field`   | `Field`     |
-| `Boolean` | `Group`   | `Group`   | `Group`     |
-| `Boolean` | `I8`      | `I8`      | `I8`        |
-| `Boolean` | `I16`     | `I16`     | `I16`       |
-| `Boolean` | `I32`     | `I32`     | `I32`       |
-| `Boolean` | `I64`     | `I64`     | `I64`       |
-| `Boolean` | `I128`    | `I128`    | `I128`      |
-| `Boolean` | `U8`      | `U8`      | `U8`        |
-| `Boolean` | `U16`     | `U16`     | `U16`       |
-| `Boolean` | `U32`     | `U32`     | `U32`       |
-| `Boolean` | `U64`     | `U64`     | `U64`       |
-| `Boolean` | `U128`    | `U128`    | `U128`      |
-| `Boolean` | `Scalar`  | `Scalar`  | `Scalar`    |
+| Condition | First       | Second      | Destination |
+|-----------|-------------|-------------|-------------|
+| `Boolean` | `Boolean`   | `Boolean`   | `Boolean`   |
+| `Boolean` | `Field`     | `Field`     | `Field`     |
+| `Boolean` | `Group`     | `Group`     | `Group`     |
+| `Boolean` | `I8`        | `I8`        | `I8`        |
+| `Boolean` | `I16`       | `I16`       | `I16`       |
+| `Boolean` | `I32`       | `I32`       | `I32`       |
+| `Boolean` | `I64`       | `I64`       | `I64`       |
+| `Boolean` | `I128`      | `I128`      | `I128`      |
+| `Boolean` | `U8`        | `U8`        | `U8`        |
+| `Boolean` | `U16`       | `U16`       | `U16`       |
+| `Boolean` | `U32`       | `U32`       | `U32`       |
+| `Boolean` | `U64`       | `U64`       | `U64`       |
+| `Boolean` | `U128`      | `U128`      | `U128`      |
+| `Boolean` | `Scalar`    | `Scalar`    | `Scalar`    |
+| `Boolean` | `Signature` | `Signature` | `Signature` |
 
 ***
 

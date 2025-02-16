@@ -22,11 +22,11 @@ cargo --version
 
 ### 2. Build Source Code
 
-You can install SnarkVM by building from the source code as follows:
+You can install snarkVM by building from the source code as follows:
 
 ```bash
 # Download the source code
-git clone https://github.com/AleoHQ/snarkVM
+git clone https://github.com/ProvableHQ/snarkVM
 cd snarkvm
 
 # Build in release mode
@@ -35,7 +35,7 @@ $ cargo install --path .
 
 This will generate the executable `~/.cargo/bin/snarkvm`.
 
-Now to use the SnarkVM CLI, in your terminal, run:
+Now to use the snarkVM CLI, in your terminal, run:
 ```bash
 snarkvm
 ```
@@ -45,5 +45,3 @@ snarkvm
 Dive into some code with [**Hello Aleo**](02_hello.md).
 
 :::
-
-
