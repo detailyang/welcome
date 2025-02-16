@@ -157,7 +157,7 @@ import foo.aleo;
 
 program hello.aleo {
     const FOO: u64 = 1u64;
-    mapping balances: address => u64;
+    mapping account: address => u64;
 
     record token {
         owner: address,
