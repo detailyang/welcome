@@ -22,29 +22,19 @@ An index of all pages available in this documentation.
 - [Leo Command Line Interface](./leo/05_commands.md)
 - [Leo Code Editor Plugins](./leo/06_tooling.md)
 - [Leo Examples, Guides, and Developer Resources](./leo/07_resources.md)
-- [Leo Cheatsheet](./leo/09_cheatsheet.md)
+- [Leo Cheatsheet](./leo/08_cheatsheet.md)
+- [Leo Core Developers Call](./leo/15_core_devs_call.md)
 
 ### Chapter 2: Leo by Example
 
-- [Auction](./leo/08_auction.md)
-- [Basic Bank](https://github.com/AleoHQ/workshop/tree/master/basic_bank)
-- [Vote](https://github.com/AleoHQ/workshop/tree/master/vote)
-- [Token](https://github.com/AleoHQ/workshop/tree/master/token)
-- [TicTacToe](https://github.com/AleoHQ/workshop/tree/master/tictactoe)
-- [Battleship](https://github.com/AleoHQ/workshop/tree/master/battleship)
+- [Auction](./leo/09_auction.md)
+- [Basic Bank](https://github.com/ProvableHQ/workshop/tree/master/basic_bank)
+- [Vote](https://github.com/ProvableHQ/workshop/tree/master/vote)
+- [Token](https://github.com/ProvableHQ/workshop/tree/master/token)
+- [TicTacToe](https://github.com/ProvableHQ/workshop/tree/master/tictactoe)
+- [Battleship](https://github.com/ProvableHQ/workshop/tree/master/battleship)
 
-### Chapter 3: Concepts
-
-- [Accounts](./concepts/00_accounts.md)
-- [Programs](./concepts/01_programs.md)
-- [Records](./concepts/02_records.md)
-- [Transactions](./concepts/03_transactions.md)
-- [Transaction Fees](./concepts/03A_transaction_fees.md)
-- [Transitions](./concepts/04_transitions.md)
-- [Blocks](./concepts/05_blocks.md)
-
-
-### Chapter 4: Aleo Instructions
+### Chapter 3: Aleo Instructions
 
 - [Overview](./00_aleo_overview.md)
 - [Installation](./aleo/01_installation.md)
@@ -55,11 +45,22 @@ An index of all pages available in this documentation.
 - [Aleo Instructions Grammar](./aleo/06_grammar.md)
 - [Aleo Instructions Code Editor Plugins](./aleo/07_tooling.md)
 
-## Testnet III
+### Chapter 4: Concepts
+
+- [Accounts](./concepts/00_accounts.md)
+- [Programs](./concepts/01_programs.md)
+- [Records](./concepts/02_records.md)
+- [Transactions](./concepts/03_transactions.md)
+- [Transaction Fees](./concepts/03A_transaction_fees.md)
+- [Transitions](./concepts/04_transitions.md)
+- [Blocks](./concepts/05_blocks.md)
+- [Public vs. Private State](./concepts/06_public_private.md)
+
+## Testnet
 
 ### Chapter 5: Getting Started
 
-- [Testnet III.](./testnet/getting_started/00_overview.md)
+- [Testnet](./testnet/getting_started/00_overview.md)
 
 ### Chapter 6: API Reference
 
@@ -77,7 +78,7 @@ An index of all pages available in this documentation.
 - [Get Mapping Names](./testnet/public_endpoints/11_get_mapping_names.md)
 - [Get Mapping Value](./testnet/public_endpoints/12_get_mapping_value.md)
 - [Get State Path for Commitment](./testnet/public_endpoints/13_get_state_path_for_commitment.md)
-- [Get Beacons](./testnet/public_endpoints/14_get_beacons.md)
+- [Get Committee](./testnet/public_endpoints/14_get_committee.md)
 - [Get Peers Count](./testnet/public_endpoints/15_get_peers_count.md)
 - [Get Peers All](./testnet/public_endpoints/16_get_peers_all.md)
 - [Get Peers All Metrics](./testnet/public_endpoints/17_get_peers_all_metrics.md)
@@ -91,7 +92,18 @@ An index of all pages available in this documentation.
 
 ## Advanced Topics
 
-### Chapter 7: The Aleo Curves
+### Chapter 7: Dive into the AVM
+
+- [Overview](./advanced/dive-into-avm/00_overview.md)
+- [Aleo Account Keys](./advanced/dive-into-avm/01_aleo_account_keys.md)
+- [Circuits and R1CS](./advanced/dive-into-avm/02_r1cs.md)
+- [Inclusion Proofs](./advanced/dive-into-avm/03_inclusion_proof.md)
+
+### Chapter 8: Introduction to zk-SNARKs
+
+- [Overview](./advanced/intro-to-zksnark/00_overview.md)
+
+### Chapter 9: The Aleo Curves
 
 - [Overview](./advanced/the_aleo_curves/00_overview.md)
 - [Edwards BLS12](./advanced/the_aleo_curves/01_edwards_bls12.md)

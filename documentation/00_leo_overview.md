@@ -4,11 +4,10 @@ title: The Leo Programming Language
 sidebar_label: Overview
 ---
 
-Welcome to the Leo programming language. Leo is a functional, statically-typed programming language built
-for writing private applications. Leo is a high-level programming language that compiles down to low-level Aleo Instructions.
+Welcome to the Leo programming language. Leo is a statically-typed programming language for private applications. Designed for intuitive Aleo blockchain development, Leo lays the foundation for a private, decentralized ecosystem.
 
 :::info
-The Leo language is currently in active development. Please monitor the repository on [**GitHub**](https://github.com/AleoHQ/leo) for possibly breaking changes.
+The Leo language is currently in active development. Please monitor the repository on [**GitHub**](https://github.com/ProvableHQ/leo) for possibly breaking changes.
 :::
 
 ## Installing Leo
@@ -27,11 +26,11 @@ To learn the core concepts and syntax of Leo, start with the [**Layout of a Leo 
 
 To view the full list of supported operators in Leo, see [**Operators**](./leo/04_operators.md).
 
-For a quick reference of Leo syntax, see the [**Leo Cheat Sheet**](./leo/09_cheatsheet.md).
+For a quick reference of Leo syntax, see the [**Leo Cheat Sheet**](./leo/08_cheatsheet.md).
 
 ## Formal Language Documentation
 
-A formal ABNF grammar specification for the syntax of Leo can be viewed [here](https://github.com/AleoHQ/grammars/blob/master/leo.abnf).
+A formal ABNF grammar specification for the syntax of Leo can be viewed [here](https://github.com/ProvableHQ/grammars/blob/master/leo.abnf).
 
 ## Command Line Interface Documentation
 
@@ -52,13 +51,18 @@ The Leo CLI provides a suite of commands to make programming in Leo easy.
 ## Additional Material
 Install Leo for your favorite code [**editor**](./leo/06_tooling.md).
 
-For additional developer resources such as examples and community projects, see [**Developer Resources**](./leo/08_resources.md).
+For additional developer resources such as examples and community projects, see [**Developer Resources**](./leo/07_resources.md).
 
-Is your Leo code formatted correctly? Check out the [**Style Guide**](./leo/08_resources.md#style-guide) and [**Common Patterns**](./leo/08_resources.md#common-patterns) for the official guidelines.
+Is your Leo code formatted correctly? Check out the [**Style Guide**](./leo/07_resources.md#style-guide) and [**Common Patterns**](./leo/07_resources.md#common-patterns) for the official guidelines.
 
-Found a bug? Have an idea for a feature? File an issue on the [**Leo GitHub**](https://github.com/AleoHQ/leo/issues/new/choose).
+Found a bug? Have an idea for a feature? File an issue on the [**Leo GitHub**](https://github.com/ProvableHQ/leo/issues/new/choose).
 
-See the [**Contributing Guide**](./leo/08_resources.md#contributing) for more information.
+See the [**Contributing Guide**](./leo/07_resources.md#contributing) for more information.
 
 ## Examples
-- [Private Auction](./leo/10_auction.md)
+- [Private Auction](./leo/09_auction.md)
+- [Basic Bank](./leo/10_basic_bank.md)
+- [Vote](./leo/11_vote.md)
+- [Token](./leo/12_token.md)
+- [TicTacToe](./leo/13_tictactoe.md)
+- [Battleship](./leo/14_battleship.md)
