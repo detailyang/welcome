@@ -132,7 +132,7 @@ leo
 
 You should see something like:
 ![leo installation](./images/leo-install-success.png)
-For more details about how to use `leo` Cli, check out [this link](https://developer.aleo.org/leo/commands)
+For more details about how to use `leo` Cli, check out [this link](https://docs.leo-lang.org/leo/commands)
 
 ---
 
@@ -260,7 +260,7 @@ You should see something like:
 
 ![leo installation](./images/leo-install-success.png)
 
-For more details about how to use `leo` Cli, check out [this link](https://developer.aleo.org/leo/commands)
+For more details about how to use `leo` Cli, check out [this link](https://docs.leo-lang.org/leo/commands)
 
 ---
 ## Troubleshooting Common Issues with snarkOS
