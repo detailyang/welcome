@@ -41,13 +41,13 @@ The `.env` file contains a private key and address. This is the account that wil
 
 ### Propose
 
-Anyone can issue a new proposal publicly by calling `propose` function.
+Anyone can issue a new proposal publicly by calling the `propose` function.
 
 ### Create Ticket
 
-Proposers can create new tickets for proposed proposals.
+Proposers can create new tickets for proposals.
 
-Ticket is a record with `owner` and `pid`, it can be used to vote for the specific proposal - `pid`, and can only be used(voted) by the ticket `owner`.
+A ticket is a record with an `owner` and a proposal id `pid`. A ticket can be used to vote for a proposal identified by `pid`; it **can only be used by the ticket owner**. That is, **only the owner can use that `ticket` to cast a vote**.
 
 ### Vote
 
