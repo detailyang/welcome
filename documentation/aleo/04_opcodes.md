@@ -360,40 +360,28 @@ The command `branch.neq <first> <second> to <destination>` branches execution to
 
 #### Description
 
-Enables casting between different literals.
+Enables casting between different literals and can be used to construct structs and records.
+In the case of literals, `cast` checks that the source data type can fit into target data type.
 
 #### Example Usage
 
 ```aleo
-input r0 as field.private;
-cast r0 into r1 as group;
-cast r0 into r2 as u8;
-cast r3 r4 r5 r6 into r7 as [boolean; 4u32];
-cast r7 into r8 as [[boolean; 4u32]; 1u32];
+struct foo:
+    a as address;
+    b as boolean;
+
+function hello:
+    input r0 as address.private;
+    input r1 as boolean.private;
+    input r2 as group.private;
+    cast r0 r1 into r3 as foo;
+    cast r0 into r4 as group;
+    cast r2 into r5 as group.x;
+    cast r2 into r6 as group.y;
+    cast r2 into r7 as field;
+    cast r1 r1 r1 r1 into r7 as [boolean; 4u32];
+    cast r7 into r8 as [[boolean; 4u32]; 1u32];
 ```
-
-#### Supported Types
-
-| First     | Second    |
-|-----------|-----------|
-| `Address` | `Address` |
-| `Array`   | `Array`   |
-| `Boolean` | `Boolean` |
-| `Field`   | `Field`   |
-| `Group`   | `Group`   |
-| `I8`      | `I8`      |
-| `I16`     | `I16`     |
-| `I32`     | `I32`     |
-| `I64`     | `I64`     |
-| `I128`    | `I128`    |
-| `U8`      | `U8`      |
-| `U16`     | `U16`     |
-| `U32`     | `U32`     |
-| `U64`     | `U64`     |
-| `U128`    | `U128`    |
-| `Scalar`  | `Scalar`  |
-
-***
 
 ### `cast.lossy`
 
@@ -401,7 +389,8 @@ cast r7 into r8 as [[boolean; 4u32]; 1u32];
 
 #### Description
 
-Perform casting with lossy truncation.
+Enables casting between different literals.
+`cast.lossy` performs a lossy operation when the source data type cannot fit into the target data type.
 
 #### Example Usage
 
@@ -411,27 +400,6 @@ cast r0 into r1 as group;
 cast r0 into r2 as u8;
 cast.lossy r0 into r3 as u8; // The bottom 8 bits of the r0 are extracted into a u8 and placed into r3
 ```
-
-#### Supported Types
-
-| First     | Second    |
-|-----------|-----------|
-| `Address` | `Address` |
-| `Boolean` | `Boolean` |
-| `Field`   | `Field`   |
-| `Group`   | `Group`   |
-| `I8`      | `I8`      |
-| `I16`     | `I16`     |
-| `I32`     | `I32`     |
-| `I64`     | `I64`     |
-| `I128`    | `I128`    |
-| `U8`      | `U8`      |
-| `U16`     | `U16`     |
-| `U32`     | `U32`     |
-| `U64`     | `U64`     |
-| `U128`    | `U128`    |
-| `Scalar`  | `Scalar`  |
-***
 
 ### `commit.bhp256`
 
