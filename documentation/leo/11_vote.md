@@ -23,11 +23,11 @@ Follow the [Leo Installation Instructions](https://docs.leo-lang.org/leo/install
 This vote program can be run using the following bash script. Locally, it will execute Leo program functions to create proposals, create tickets, and make votes.
 
 ```bash
-cd vote
+cd leo/examples/vote
 ./run.sh
 ```
 
-The `.env` file contains a private key and address. This is the account that will be used to sign transactions and is checked for record ownership. When executing programs as different parties, be sure to set the `private_key` field in `.env` to the appropriate value. You can check out how we've set things up in `./run.sh` for a full example of how to run the program as different parties.
+The `.env` file contains a private key and network type. This is the account that will be used to sign transactions and is checked for record ownership. When executing programs as different parties, be sure to set the `private_key` field in `.env` to the appropriate value. You can check out how we've set things up in `./run.sh` for a full example of how to run the program as different parties.
 
 ## Walkthrough
 
@@ -84,6 +84,27 @@ leo run propose "{
   proposer: aleo1rfez44epy0m7nv4pskvjy6vex64tnt0xy90fyhrg49cwe0t9ws8sh6nhhr
 }"
 ```
+Output
+```bash
+
+ • {
+  owner: aleo1rfez44epy0m7nv4pskvjy6vex64tnt0xy90fyhrg49cwe0t9ws8sh6nhhr.private,
+  id: 2805252584833208809872967597325381727971256629741137995614832105537063464740field.private,
+  info: {
+    title: 2077160157502449938194577302446444field.private,
+    content: 1452374294790018907888397545906607852827800436field.private,
+    proposer: aleo1rfez44epy0m7nv4pskvjy6vex64tnt0xy90fyhrg49cwe0t9ws8sh6nhhr.private
+  },
+  _nonce: 7270749279509948287724447377218313625054368902761257869085068499107406906985group.public
+}
+ • {
+  program_id: vote.aleo,
+  function_name: propose,
+  arguments: [
+    2805252584833208809872967597325381727971256629741137995614832105537063464740field
+  ]
+}
+```
 
 You'll see that the output generates a new record with the proposal information and sets a public mapping with the proposal id as an argument input. The public mapping will be queryable on-chain.
 
@@ -99,6 +120,21 @@ PRIVATE_KEY=APrivateKey1zkpHmSu9zuhyuCJqVfQE8p82HXpCTLVa8Z2HUNaiy9mrug2
 
 leo run new_ticket 2264670486490520844857553240576860973319410481267184439818180411609250173817field aleo1c45etea8czkyscyqawxs7auqjz08daaagp2zq4qjydkhxt997q9s77rsp2
 ```
+Output
+```bash
+ • {
+  owner: aleo1c45etea8czkyscyqawxs7auqjz08daaagp2zq4qjydkhxt997q9s77rsp2.private,
+  pid: 2264670486490520844857553240576860973319410481267184439818180411609250173817field.private,
+  _nonce: 3111099913449740827888947259874663727415985369111767658428258317443300847451group.public
+}
+ • {
+  program_id: vote.aleo,
+  function_name: new_ticket,
+  arguments: [
+    2264670486490520844857553240576860973319410481267184439818180411609250173817field
+  ]
+}
+```
 
 You'll see a new private ticket created belonging to the owner, and a public mapping in the vote program to track the ID of that ticket.
 
@@ -110,6 +146,17 @@ leo run agree "{
   pid: 2264670486490520844857553240576860973319410481267184439818180411609250173817field.private,
   _nonce: 1738483341280375163846743812193292672860569105378494043894154684192972730518group.public
 }"
+```
+Output
+```bash
+ • {
+  program_id: vote.aleo,
+  function_name: agree,
+  arguments: [
+    2264670486490520844857553240576860973319410481267184439818180411609250173817field
+  ]
+}
+
 ```
 
 ## <a id="step2"></a> Voter 2 makes a vote
@@ -124,6 +171,21 @@ PRIVATE_KEY=APrivateKey1zkp6NHwbT7PkpnEFeBidz5ZkZ14W8WXZmJ6kjKbEHYdMmf2
 
 leo run new_ticket 2158670485494560943857353240576760973319410481267184429818180411607250143681field aleo1uc6jphye8y9gfqtezrz240ak963sdgugd7s96qpuw6k7jz9axs8q2qnhxc
 ```
+Output
+```bash
+ • {
+  owner: aleo1uc6jphye8y9gfqtezrz240ak963sdgugd7s96qpuw6k7jz9axs8q2qnhxc.private,
+  pid: 2158670485494560943857353240576760973319410481267184429818180411607250143681field.private,
+  _nonce: 7213678168429828883374086447188635180072431460350128753904256765278199909612group.public
+}
+ • {
+  program_id: vote.aleo,
+  function_name: new_ticket,
+  arguments: [
+    2158670485494560943857353240576760973319410481267184429818180411607250143681field
+  ]
+}
+```
 
 Voter 2 can now vote privately on their ticket. Call the agree or disagree transition function, which takes the voter's ticket output as the input.
 
@@ -133,6 +195,16 @@ leo run disagree "{
   pid: 2158670485494560943857353240576760973319410481267184429818180411607250143681field.private,
   _nonce: 6511154004161574129036815174288926693337549214513234790975047364416273541105group.public
 }"
+```
+Output
+```bash
+ • {
+  program_id: vote.aleo,
+  function_name: disagree,
+  arguments: [
+    2158670485494560943857353240576760973319410481267184429818180411607250143681field
+  ]
+}
 ```
 
 ## <a id="step3"></a> How votes are tallied
