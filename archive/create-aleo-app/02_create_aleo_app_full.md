@@ -9,7 +9,7 @@ sidebar_label: React App + Devnet + Testing Infra
 
 ## 1. Installation
 
-- Install [Aleo's transaction cannon](https://github.com/AleoHQ/tx-cannon), which will help you deploy, execute, and stress test your Leo programs.
+- Install [leo](https://github.com/ProvableHQ/leo), which will let you deploy and execute your program.
 - Install [snarkOS](https://github.com/AleoHQ/snarkOS), which will spin up a live devnet either locally or on AWS.
 - Install [tmux](https://formulae.brew.sh/formula/tmux), because the devnet dashboard uses this. 
 - Run these commands to set up your React App and install Leo, our statically-typed programming language built for writing private applications:
@@ -204,14 +204,11 @@ Check that your deployment was successful on your network using: http://localhos
 
 ![](./images/deployment-txn.png)
 
-### Transaction Cannon Deployment
-
-Using the transaction cannon to deploy programs to devnet is even easier. Create a new Leo program with a different name and use the `tx-cannon` command:
 
 ```bash
 leo new helloworld-deux
 
-tx-cannon deploy helloworld-deux/build/hellowords.aleo -k <private-key> --fee 3 -e http://localhost:3030
+leo deploy helloworld-deux/build/hellowords.aleo --private-key <private-key> -e http://localhost:3030
 ```
 
 Again, you can check that your deployment was successful on your network using: http://localhost:3030/testnet3/transaction/your-txn-id.
