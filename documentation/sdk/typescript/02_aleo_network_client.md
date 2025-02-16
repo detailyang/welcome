@@ -24,7 +24,7 @@ The methods provided in this class provide information on the Aleo Blockchain</p
     * [.getDeploymentTransactionIDForProgram(programId)](#AleoNetworkClient+getDeploymentTransactionIDForProgram)
     * [.getDeploymentTransactionForProgram(programId)](#AleoNetworkClient+getDeploymentTransactionForProgram)
     * [.getProgramMappingNames(programId)](#AleoNetworkClient+getProgramMappingNames)
-    * [.getMappingValue(programId, mappingName, key)](#AleoNetworkClient+getMappingValue)
+    * [.getProgramMappingValue(programId, mappingName, key)](#AleoNetworkClient+getProgramMappingValue)
     * [.getLatestBlock()](#AleoNetworkClient+getLatestBlock)
     * [.getLatestHeight()](#AleoNetworkClient+getLatestHeight)
     * [.getStateRoot()](#AleoNetworkClient+getStateRoot)
@@ -233,9 +233,9 @@ let mappings = connection.getProgramMappingNames("credits.aleo");
 let mappings = connection.getProgramImportNames("foo.aleo");
 ```
 
-<a name="AleoNetworkClient+getMappingValue"></a>
+<a name="AleoNetworkClient+getProgramMappingValue"></a>
 
-### aleoNetworkClient.getMappingValue(programId, mappingName, key)
+### aleoNetworkClient.getProgramMappingValue(programId, mappingName, key)
 <p>Returns the value of a program's mapping for a specific key</p>
 
 **Kind**: instance method of [<code>AleoNetworkClient</code>](#AleoNetworkClient)  
@@ -249,7 +249,7 @@ let mappings = connection.getProgramImportNames("foo.aleo");
 **Example**  
 ```js
 ## Get public balance of an account
-let mappingValue = connection.getMappingValue("credits.aleo", "account", "aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px");
+let mappingValue = connection.getProgramMappingValue("credits.aleo", "account", "aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px");
 ```
 <a name="AleoNetworkClient+getLatestBlock"></a>
 
