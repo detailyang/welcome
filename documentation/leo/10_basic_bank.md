@@ -1,5 +1,5 @@
 ---
-id: basic bank
+id: basic_bank
 title: A Basic Bank using Leo
 ---
 
