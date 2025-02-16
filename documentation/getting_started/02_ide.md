@@ -1,14 +1,19 @@
 ---
-id: tooling
-title: Tooling for Leo
-sidebar_label: Tooling
+id: ide
+title: IDE
+sidebar_label: IDE
 ---
 
 Aleo maintains syntax highlighting implementations across different platforms. If you do not see your favorite editor on this list, please reach out on [GitHub](https://github.com/ProvableHQ/welcome/issues/new).
 
-1. [Sublime Text](#sublime-text)
-2. [Visual Studio Code](#vs-code)
-3. [Intellij](#intellij)
+- [Sublime Text](#sublime-text)
+  - [Install](#install)
+  - [Usage](#usage)
+- [VS Code](#vs-code)
+  - [Install](#install-1)
+  - [Usage](#usage-1)
+- [Intellij](#intellij)
+  - [Install](#install-2)
 
 ## Sublime Text
 

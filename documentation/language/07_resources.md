@@ -1,25 +1,12 @@
 ---
-id: resources
-title: Developer Resources
+id: style
+title: Style Guide
+sidebar: Style Guide
 ---
 
-## 1. The Aleo Workshop Repository
 
-📜 A starter guide to build applications on Aleo 📜
 
-https://github.com/ProvableHQ/workshop
 
-## 2. The Awesome Aleo Repository
-
-🏎️ A curated list of Aleo & Leo code and resources 🏎️
-
-https://github.com/howardwu/awesome-aleo
-
-## 3. The Discord Community
-
-💬 Share what you are building in the #aleo-language channel 💬
-
-https://discord.gg/aleo
 
 
 ### Looking for [More Aleo Resources?](../00_getting_started.md)

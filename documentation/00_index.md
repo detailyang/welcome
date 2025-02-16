@@ -1,7 +1,7 @@
 ---
-id: overview
-title: Table of Contents
-sidebar_label: Overview
+id: index
+title: Index 
+sidebar_label: Index
 ---
 
 An index of all pages available in this documentation.

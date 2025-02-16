@@ -1,7 +1,7 @@
 ---
 id: leo
 title: The Leo Programming Language
-sidebar_label: Overview
+sidebar_label: Leo
 ---
 
 Welcome to the Leo programming language. Leo is a statically-typed programming language for private applications. Designed for intuitive Aleo blockchain development, Leo lays the foundation for a private, decentralized ecosystem.

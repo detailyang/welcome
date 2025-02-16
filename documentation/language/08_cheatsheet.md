@@ -1,6 +1,7 @@
 ---
 id: cheatsheet
 title: Leo Syntax Cheatsheet
+sidebar: Cheatsheet
 ---
 
 ## 1. File Import
