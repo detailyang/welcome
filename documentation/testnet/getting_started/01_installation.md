@@ -37,7 +37,7 @@ The following are **minimum** requirements to run an Aleo node:
 
 ### Clients
 
-- **OS**: 64-bit architectures only, latest up-to-date for security, Ubuntu 20.04, macOS Ventura or later, Windows 11 or later
+- **OS**: 64-bit architectures only, latest up-to-date for security, Ubuntu 22.04, macOS Ventura or later, Windows 11 or later
 - **CPU**: 64-bit architectures only 32-cores
 - **RAM**: DDR4 or better, 32GB of memory
 - **Storage**: PCIe Gen 3 x4, PCIe Gen 4 x2 NVME SSD, or better, 300GB of disk space
@@ -46,7 +46,7 @@ The following are **minimum** requirements to run an Aleo node:
 
 ### Provers
 
-- **OS**: 64-bit architectures only, latest up-to-date for security, Ubuntu 20.04, macOS Ventura or later
+- **OS**: 64-bit architectures only, latest up-to-date for security, Ubuntu 22.04, macOS Ventura or later
 - **CPU**: 64-bit architectures only, 32-cores (64-cores preferred)
 - **RAM**: DDR4 or better, 32GB of memory (64GB or larger preferred)
 - **Storage**: PCIe Gen 3 x4, PCIe Gen 4 x2 NVME SSD, or better, 32GB of disk space
@@ -55,7 +55,7 @@ The following are **minimum** requirements to run an Aleo node:
 
 ### Validators
 
- - **OS**: 64-bit architectures only, latest up-to-date for security, Validators: Ubuntu 20.04
+ - **OS**: 64-bit architectures only, latest up-to-date for security, Validators: Ubuntu 22.04
  - **CPU**: 64-bit architectures only, 32-cores (64-cores preferred)
  - **RAM**: DDR4 or better, 64GB of memory (128GB or larger preferred)
  - **Storage**: PCIe Gen 3 x4, PCIe Gen 4 x2 NVME SSD, or better, 2TB of disk space (4TB or larger preferred)
