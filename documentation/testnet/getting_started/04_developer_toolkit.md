@@ -139,11 +139,11 @@ This section refers to the guide created by GitHub [here](https://docs.github.co
 
 Check out the following resources:
 
-- [Our developer docs](https://developer.aleo.org/getting_started/)
+- [Our developer docs](https://docs.leo-lang.org/getting_started/)
 - See the SDK in action at [provable.tools](https://www.provable.tools/)
 - Play around with Leo in the browser with [Leo Playground](https://play.leo-lang.org/)
-- Learn Leo syntax, functions, and best practices with the [Leo's language guide](https://developer.aleo.org/leo/language)
-- Deploy and Execute Leo applications on-chain with our [Deploy and Execute Demo](https://developer.aleo.org/testnet/getting_started/deploy_execute_demo)
+- Learn Leo syntax, functions, and best practices with the [Leo's language guide](https://docs.leo-lang.org/leo/language)
+- Deploy and Execute Leo applications on-chain with our [Deploy and Execute Demo](https://docs.leo-lang.org/testnet/getting_started/deploy_execute_demo)
 <!-- markdown-link-check-disable -->
 - See Aleo's testnet live and other Leo developer's applications via an explorer such as [Haruka's Program Registry](https://explorer.hamp.app/programs) or [aleo.network](https://www.aleo.network/).
 <!-- markdown-link-check-enable -->

@@ -9,7 +9,7 @@ sidebar_label: React App + Devnet + Testing Infra
 
 ## 1. Installation
 
-- Install [Aleo's transaction cannon](https://github.com/AleoHQ/tx-cannon), which will help you deploy, execute, and stress test your Leo programs.
+- Install [leo](https://github.com/ProvableHQ/leo), which will let you deploy and execute your program.
 - Install [snarkOS](https://github.com/AleoHQ/snarkOS), which will spin up a live devnet either locally or on AWS.
 - Install [tmux](https://formulae.brew.sh/formula/tmux), because the devnet dashboard uses this. 
 - Run these commands to set up your React App and install Leo, our statically-typed programming language built for writing private applications:
@@ -204,14 +204,11 @@ Check that your deployment was successful on your network using: http://localhos
 
 ![](./images/deployment-txn.png)
 
-### Transaction Cannon Deployment
-
-Using the transaction cannon to deploy programs to devnet is even easier. Create a new Leo program with a different name and use the `tx-cannon` command:
 
 ```bash
 leo new helloworld-deux
 
-tx-cannon deploy helloworld-deux/build/hellowords.aleo -k <private-key> --fee 3 -e http://localhost:3030
+leo deploy helloworld-deux/build/hellowords.aleo --private-key <private-key> -e http://localhost:3030
 ```
 
 Again, you can check that your deployment was successful on your network using: http://localhost:3030/testnet3/transaction/your-txn-id.
@@ -278,13 +275,13 @@ Congratulations on becoming a Leo contributor! 🎉
 
 1. You created a React template pre-packaged to use Leo programs. This sets the scaffold for creating an easy React app.
 
-2. You also installed [Leo](https://developer.aleo.org/leo/), our statically-typed programming language built for writing private applications.
+2. You also installed [Leo](https://docs.leo-lang.org/leo/), our statically-typed programming language built for writing private applications.
 
-3. You executed `helloworld` using WASM, which called on in-browser resources to use [snarkVM](https://developer.aleo.org/aleo/), the data execution layer. It is used to compile Leo programs and execute them locally off-chain. All Leo programs eventually become Aleo instructions via Aleo’s compiler during the execution phase of snarkVM. 
+3. You executed `helloworld` using WASM, which called on in-browser resources to use [snarkVM](https://docs.leo-lang.org/aleo/), the data execution layer. It is used to compile Leo programs and execute them locally off-chain. All Leo programs eventually become Aleo instructions via Aleo’s compiler during the execution phase of snarkVM. 
 
 4. You also executed `helloworld` locally in your terminal using `leo execute`, which similarly uses local computational resources to compile your Leo program using snarkVM.
 
-5. You deployed the `helloworld` program onto a local devnet using in-browser WASM, which basically abstracted [snarkOS](https://developer.aleo.org/testnet/getting_started/deploy_execute/#deploy) functionality, which is the data availability layer or blockchain / distributed ledger. Using the transaction cannon is also an abstraction on snarkOS. 
+5. You deployed the `helloworld` program onto a local devnet using in-browser WASM, which basically abstracted [snarkOS](https://docs.leo-lang.org/testnet/getting_started/deploy_execute/#deploy) functionality, which is the data availability layer or blockchain / distributed ledger. Using the transaction cannon is also an abstraction on snarkOS. 
 
 6. Lastly, you executed the main transition on your deployed `helloworld` program using the transaction cannon, which again, abstracts the usage of snarkOS and snarkVM. You checked that `helloworld.aleo` was indeed deployed on-chain, and created an execution transaction and broadcasted it to the network. Depending on the transition itself, we can then check if the proper records or public mappings were indeed modified on-chain.
 

@@ -85,9 +85,9 @@ Source: [`python-sdk`](https://github.com/ProvableHQ/python-sdk)
 
 ## 📚 Documentation
 
-#### [API Documentation](https://developer.aleo.org)
+#### [API Documentation](https://docs.leo-lang.org)
 API Documentation, tutorials for the Aleo SDK, and documentation on how to build Leo and Aleo Instructions programs can
-be found on the [Aleo Developer Docs](https://developer.aleo.org) page.
+be found on the [Aleo Developer Docs](https://docs.leo-lang.org) page.
 
 #### [SDK Readme](https://github.com/ProvableHQ/sdk/tree/testnet3/sdk#readme)
 The SDK Readme provides concepts core to executing zero knowledge programs in the web and several detailed examples of

@@ -42,11 +42,11 @@ Learning Leo is the fastest way to develop private applications on Aleo.
 
 * [**Hello Leo**](./leo/02_hello.md) - Run your first Leo program.
 * [**Leo Docs**](./00_leo_overview.md) - Learn how to use the latest Leo language features.
-* [**Leo Examples**](https://developer.aleo.org/leo/examples) - Jumpstart your application development with an official Aleo example.
+* [**Leo Examples**](https://docs.leo-lang.org/leo/examples) - Jumpstart your application development with an official Aleo example.
 
 ## Read the Protocol
 
-* [**Aleo Concepts**](https://developer.aleo.org/concepts) - Aleo is a new layer 1 blockchain. Read about the similarities and differences between Aleo and other blockchains.
+* [**Aleo Concepts**](https://docs.leo-lang.org/concepts) - Aleo is a new layer 1 blockchain. Read about the similarities and differences between Aleo and other blockchains.
 
 <!-- markdown-link-check-enable -->
 
@@ -78,7 +78,7 @@ If you're interested in learning more about Aleo:
 
 🐙 | GitHub ~ **https://github.com/ProvableHQ**
 
-📄 | Developer Documentation ~ **https://developer.aleo.org/**
+📄 | Developer Documentation ~ **https://docs.leo-lang.org/**
 
 🎮 | Leo Playground ~ **https://play.leo-lang.org/**
 

@@ -37,7 +37,7 @@ This application was translated into Leo from the [zk-battleship](https://github
 
 ## How to Run
 
-Follow the [Leo Installation Instructions](https://developer.aleo.org/leo/installation).
+Follow the [Leo Installation Instructions](https://docs.leo-lang.org/leo/installation).
 
 This battleship program can be run using the following bash script. Locally, it will execute Leo program functions to create the board, place ships, and play a game of battleship.
 
