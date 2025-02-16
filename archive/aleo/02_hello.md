@@ -31,7 +31,7 @@ function hello:
     output r2 as u32.private;
 ```
 
-You can run a program with the `snarkvm run` command, followed by the function name you want to run and its input parameters:
+You can run a program with the `snarkvm run` command (this command is used when you want to interact with an Aleo program on the blockchain, such as creating a transaction that updates the state of the program), followed by the function name you want to run and its input parameters:
 
 ``` bash
 snarkvm run hello 2u32 3u32
@@ -56,7 +56,7 @@ As you can see, the output has the `5u32` value, representing the sum of the inp
 
 ## 2. Executing a program
 
-You can execute a program with the `snarkvm execute` command, followed by the function name you want to execute and its input parameters:
+You can execute a program with the `snarkvm execute` command (this command is used when you want to test the logic of your Aleo program and verify that it produces the correct outputs and proofs), followed by the function name you want to execute and its input parameters:
 
 ``` bash
 snarkvm execute hello 2u32 3u32
