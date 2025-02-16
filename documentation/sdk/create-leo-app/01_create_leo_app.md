@@ -1,10 +1,10 @@
 ---
 id: tutorial
-title: Create Aleo App - React + JS + Leo Tutorial
+title: Create Leo App - React + JS + Leo Tutorial
 sidebar_label: React + JS + Leo Tutorial
 ---
 
-<a href="https://www.npmjs.com/package/create-aleo-app"> <img alt="Create Aleo App" src="https://img.shields.io/npm/l/create-aleo-app?label=NPM%20-%20Create-Aleo-App&labelColor=green&color=blue" /></a>
+<a href="https://www.npmjs.com/package/create-leo-app"> <img alt="Create Leo App" src="https://img.shields.io/npm/l/create-leo-app?label=NPM%20-%20Create-Leo-App&labelColor=green&color=blue" /></a>
 
 
 ## 1. Installation
@@ -82,8 +82,7 @@ Example:
 Note down your transaction ID in the back of the URL from the faucet. The success message in the Discord thread should look like this:
 
 ```bash
-Transfer successful! for message ID: 1156693507768078496
-https://apiv2.aleo.network/testnet3/transaction/at12u62xwfew2rq32xee8nwhtlxghfjz7mm3528yj240nuezue625fqy4lhlp
+have fun https://explorer.provable.com/transaction/...
 ```
 
 ### Leo & `helloworld`
@@ -106,7 +105,7 @@ import helloworld_program from "../helloworld_[randomsuffix]/build/main.aleo?raw
 Let's dig in a little more. Navigate back to your Leo project and Add your private key to the `.env` in your new Aleo project. Replace the example private key with the one you saved above.
 
 ```bash
-NETWORK=testnet3
+NETWORK=testnet
 PRIVATE_KEY=APrivateKey1zkp2FCZZ7ucNVx5hoofizpq18mvCZNKTpqKMTt1wTahmxSf
 ```
 
@@ -123,8 +122,8 @@ leo help  ## you know what this does
 You can try it yourself and observe the outputs in the terminal.
 
 ```bash
-leo run main
-leo execute main
+leo run main 1u32 2u32
+leo execute main 1u32 2u32
 ```
 
 Let's get back to deploying!
@@ -143,7 +142,7 @@ Take your transaction ID from the Discord URL earlier:
 at12u62xwfew2rq32xee8nwhtlxghfjz7mm3528yj240nuezue625fqy4lhlp
 ``` 
 <!-- markdown-link-check-disable -->
-Go to “Get Transaction” at [aleo.tools/rest](https://aleo.tools/rest) and insert your transaction ID to look at the JSON object. You can similarly use https://api.explorer.aleo.org/v1/testnet3/transaction/[insert-your-transaction-id] to get the same output in your browser. 
+Go to “Get Transaction” at [provable.tools/rest](https://provable.tools/rest) and insert your transaction ID to look at the JSON object. You can similarly use https://api.explorer.provable.com/v1/testnet/transaction/[insert-your-transaction-id] to get the same output in your browser. 
 <!-- markdown-link-check-enable-->
 
 ![get-transaction](./images/get-transaction.png)
@@ -154,7 +153,7 @@ Look at `object.execution.transitions[0].outputs[0].value` and copy the cipher
 record1qyqspk3emhy5wzu4zg59ynhwtcpwg6ez6k4cl9d690hhqcd36pqh3vcpqyxx66trwfhkxun9v35hguerqqpqzqrtc3d8s5qrlufglkk3gkvgj3w2xdul2kl0pxhvt7f85qfxm0dcpt4g5gf6u356sgte9cyzqhj940l6qsdk5uf7u2xcwfv4zrvmeqdpzjrt848
 ```
 
-Navigate to [aleo.tools/record](https://aleo.tools/record) and insert the record value along with your view key that you saved earlier. You are the owner of the record, and therefore, you have the view key in order to decrypt it to show the plaintext.
+Navigate to [provable.tools/record](https://provable.tools/record) and insert the record value along with your view key that you saved earlier. You are the owner of the record, and therefore, you have the view key in order to decrypt it to show the plaintext.
 
 ![decrypt-record](./images/decrypt-record.png)
 
@@ -212,7 +211,7 @@ git push -u origin main
 
 4. Similarly, we deployed the `helloworld` program, again using the WASM + web workers abstraction layer but you can also deploy programs on-chain using [snarkOS](https://developer.aleo.org/testnet/getting_started/deploy_execute/#deploy), the data availability layer or blockchain / distributed ledger.
 
-5. During the tutorial you navigated to [aleo.tools](https://aleo.tools), which is the graphical interface to our SDK, which serves as an abstraction layer of snarkOS and snarkVM. You’ll find you can perform similar actions (compiling, executing, deploying) on aleo.tools. 
+5. During the tutorial you navigated to [provable.tools](https://provable.tools), which is the graphical interface to our SDK, which serves as an abstraction layer of snarkOS and snarkVM. You’ll find you can perform similar actions (compiling, executing, deploying) on provable.tools. 
 
 
 6. The entire React template along with the WASM and web workers can also be considered an abstraction layer of snarkOS and snarkVM.

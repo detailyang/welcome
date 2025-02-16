@@ -8,7 +8,7 @@ This toolkit works best with a MacOS machine from 2021 or newer. You can check y
 
 ## Leo
 ### Download and install Leo
-- You can find the latest version of Leo [here](https://github.com/AleoHQ/leo/releases/latest).
+- You can find the latest version of Leo [here](https://github.com/ProvableHQ/leo/releases/latest).
 - After downloading the version that works for your machine, double-click the zip file to open it.
 - Then install Leo by moving it to `/usr/local/bin` on your machine, which you can do by dragging it to that location or via terminal (`sudo mv leo /usr/local/bin`); in both cases, you will need to enter your computer password.
 
@@ -20,9 +20,9 @@ Open a new terminal window and type `leo --help` to confirm that Leo is installe
 
    ```
     CLI Arguments entry point - includes global parameters and subcommands
-    
+
     Usage: leo [OPTIONS] [API] <COMMAND>
-    
+
     Commands:
     account  Create a new Aleo account
     new      Create a new Leo package in a new directory
@@ -33,10 +33,10 @@ Open a new terminal window and type `leo --help` to confirm that Leo is installe
     execute  Execute a program with input variables
     update   Update the Leo CLI
     help     Print this message or the help of the given subcommand(s)
-    
+
     Arguments:
     [API]  Custom Aleo PM backend URL [env: APM_URL=]
-    
+
     Options:
     -d                 Print additional information for debugging
     -q                 Suppress CLI output
@@ -45,7 +45,7 @@ Open a new terminal window and type `leo --help` to confirm that Leo is installe
     -V, --version      Print version
    ```
 
-###### 💡Note: If you do not see the output above, you can build Leo from source by following the guide [here](https://github.com/AleoHQ/leo#%EF%B8%8F%EF%B8%8F-build-guide) or download the [latest `.zip`](https://github.com/AleoHQ/leo/releases/latest) file directly and then move the Leo binary to any location; we recommend `/usr/local/bin`.
+###### 💡Note: If you do not see the output above, you can build Leo from source by following the guide [here](https://github.com/ProvableHQ/leo#%EF%B8%8F%EF%B8%8F-build-guide) or download the [latest `.zip`](https://github.com/ProvableHQ/leo/releases/latest) file directly and then move the Leo binary to any location; we recommend `/usr/local/bin`.
 
 ### The `leo account` command
 
@@ -69,15 +69,15 @@ Open a new terminal window and type `leo --help` to confirm that Leo is installe
 
   ```
   Create a new Leo example package in a new directory
-      
+
   Usage: leo example [OPTIONS] <COMMAND>
-      
+
   Commands:
     lottery    A public lottery program
     tictactoe  A standard tic-tac-toe game program
     token      A transparent & shielded custom token program
     help       Print this message or the help of the given subcommand(s)
-      
+
   Options:
     -d                 Print additional information for debugging
     -q                 Suppress CLI output
@@ -140,7 +140,7 @@ This section refers to the guide created by GitHub [here](https://docs.github.co
 Check out the following resources:
 
 - [Our developer docs](https://developer.aleo.org/getting_started/)
-- See Aleo's SDK in action at [aleo.tools](https://aleo.tools)
+- See the SDK in action at [provable.tools](https://www.provable.tools/)
 - Play around with Leo in the browser with [Leo Playground](https://play.leo-lang.org/)
 - Learn Leo syntax, functions, and best practices with the [Leo's language guide](https://developer.aleo.org/leo/language)
 - Deploy and Execute Leo applications on-chain with our [Deploy and Execute Demo](https://developer.aleo.org/testnet/getting_started/deploy_execute_demo)

@@ -15,7 +15,8 @@ This will create **foo** directory and the files with the basic structure of the
 
 - **README.md** having the skeleton of a README with instructions on how to compile.
 - **main.aleo** the main file of the source code.
-- **program.json** containing the identification of the project in JSON format. Particularly, a dev address and its private key for the program.
+- **.env** stores the environment variable for the program, including the <b>NETWORK</b> and <b>PRIVATE_KEY</b> which is auto-generated when creating a new leo program
+- **program.json** containing the identification of the project in JSON format and includes additional dependencies if added
 
 The main.aleo file should have contents like this:
 
@@ -39,11 +40,10 @@ snarkvm run hello 2u32 3u32
 You will see output like this:
 
 ```bash
- • Loaded universal setup (in 1478 ms)
 
 ⛓  Constraints
 
- •  'foo.aleo/hello' - 35 constraints (called 1 time)
+ •  'foo.aleo/hello' - 33 constraints (called 1 time)
 
 ➡️  Output
 
@@ -65,11 +65,10 @@ snarkvm execute hello 2u32 3u32
 When the execution is finished, you should see the following output:
 
 ```bash
- • Loaded universal setup (in 1478 ms)
 
 ⛓  Constraints
 
- •  'foo.aleo/hello' - 35 constraints (called 1 time)
+ •  'foo.aleo/hello' - 33 constraints (called 1 time)
 
 ➡️  Output
 
@@ -213,10 +212,10 @@ Now, let's run it. In this case, the only new thing you need to know is that str
 "{a0: 1u32, a1: 2u32, a2: 3u32}"
 ```
 
-Now we can execute the `aleo run` command. We will clean the project to pick up the new code:
+Now we can execute the `snarkvm run` command. We will clean the project to pick up the new code:
 
 ```bash
-aleo clean && aleo run sum_one_to_array3 "{a0: 0u32, a1: 1u32, a2: 2u32}"
+snarkvm clean && snarkvm run sum_one_to_array3 "{a0: 0u32, a1: 1u32, a2: 2u32}"
 ```
 
 And we get the new `array3` element as output:
@@ -250,7 +249,7 @@ You can find your development application address inside the `.env` file:
 
 ```json
 {
-    NETWORK=testnet3
+    NETWORK=testnet
     PRIVATE_KEY=APrivateKey1zkpFsQNXJwdvjKs9bRsM91KcwJW1gW4CDtF3FJbgVBAvPds
 }
 ```
@@ -267,9 +266,16 @@ Consider this program:
 ```aleo showLineNumbers
 // The 'foo.aleo' program.
 program foo.aleo;
+
 record token:
     owner as address.private;
     amount as u64.private;
+
+function mint:
+    input r0 as u64.private;
+    cast self.signer r0 into r1 as token.record;
+    output r1 as token.record;
+
 function transfer_amount:
     //  sender token record
     input r0 as token.record;
@@ -311,18 +317,21 @@ Where:
 Let's run the `transfer_amount` function (if you are following along, remember to use the address found in the program.json for the owner field):
 
 ``` bash
-aleo clean && aleo run transfer_amount "{
+snarkvm clean && snarkvm run transfer_amount "{
 owner: aleo1x5nz5u4j50w482t5xtqc3jdwly9s8saaxlgjz0wvmuzmxv2l5q9qmypx09.private,
-amount: 50u64.private
+amount: 50u64.private,
+_nonce: 0group.public
 }" aleo1h3gu7fky36y8r7v2x9phc434fgf20g8qd7c7u45v269jfw6vmugqjegcvp 10u64
 ```
 
 We get the following output records:
 
 ```bash
-🚀 Executing 'foo.aleo/transfer_amount'...
- • Calling 'foo.aleo/transfer_amount'...
- • Executed 'transfer_amount' (in 3520 ms)
+
+⛓  Constraints
+
+ •  'foo.aleo/transfer_amount' - 4,172 constraints (called 1 time)
+ 
 ➡️  Outputs
  • {
   owner: aleo1x5nz5u4j50w482t5xtqc3jdwly9s8saaxlgjz0wvmuzmxv2l5q9qmypx09.private,
@@ -334,7 +343,7 @@ We get the following output records:
   amount: 10u64.private
   _nonce: 2323253577170856894742339369235137467208538700597121244293392765726742543235group.public
 }
-✅ Executed 'foo.aleo/transfer_amount' (in "[...]/foo")
+✅ Finished 'foo.aleo/transfer_amount' (in "[...]/foo")
 ```
 
 And that's it. You have transferred your first owner-defined tokens in Aleo!
