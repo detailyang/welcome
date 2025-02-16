@@ -30,7 +30,7 @@ Develop your first [**Hello Aleo**](./aleo/02_hello.md) Aleo instructions progra
 
 Learn the core concepts and syntax of [Aleo instructions](./aleo/03_language.md).
 
-Read the full list of supported [AVM opcodes](./aleo/04_opcodes.md).
+Read the full list of supported [Aleo instruction opcodes](./aleo/04_opcodes.md).
 
 ## Formal Language Documentation
 
