@@ -14,7 +14,7 @@ The Leo CLI is a command line interface tool that comes equipped with the Leo co
 
 * `-d`, `--debug` - Enables debugging mode
 * `-h`, `--help` - Prints help information
-* `-V`, `--version` - Prints version information
+* `-v`, `--version` - Prints version information
 
 ## List of Commands:
 
@@ -27,6 +27,8 @@ You can print the list of commands by running `leo --help`
 * [`build`](#leo-build) - Compile the current package as a program.
 * [`run`](#leo-run) - Run a program with input variables.
 * [`execute`](#leo-execute) - Execute a program with input variables.
+* [`add`](#leo-add) - Add a new on-chain or local dependency to the current package.
+* [`deploy`](#leo-deploy) - Deploy a program.
 * [`clean`](#leo-clean) - Clean the output directory.
 * [`update`](#leo-update) - Update to the latest version of Leo.
 * [`account`](#leo-account) - Create a new Aleo account.
@@ -37,7 +39,7 @@ You can print the list of commands by running `leo --help`
 ## `leo example`
 
 To list all available example programs, run:
-```bash
+```
 leo example
 
 # Output:
@@ -81,8 +83,6 @@ package/
 ├── program.json # Your program manifest
 ├── README.md # Your program description
 ├── build/
-├── inputs/
-│ ├── hello.in # Your program inputs
 └── src/
   └── main.leo # Your program file
 ```
@@ -118,10 +118,6 @@ This will populate the directory `build/` (creating it if it doesn't exist) with
 :::tip
 Use this command to run your program before [**executing**](#leo-execute) it.
 :::
-To run a Leo transition function using inputs from the program input `.in` file.
-```bash
-leo run {$TRANSITION}
-```
 
 To run a Leo transition function with inputs from the command line.
 `{$INPUTS}` should be a list of inputs to the program separated by spaces.
@@ -135,7 +131,7 @@ This command does not synthesize the program circuit or generate proving and ver
  Leo ✅ Compiled 'main.leo' into Aleo instructions
 
 ⛓  Constraints
- • 'hello.aleo/main' - 35 constraints (called 1 time)
+ • 'hello.aleo/main' - 33 constraints (called 1 time)
 
 ➡️  Output
  • 3u32
@@ -147,11 +143,6 @@ This command does not synthesize the program circuit or generate proving and ver
 :::tip
 Use this command to execute your program and generate a transaction object.
 :::
-
-To execute a Leo transition function using inputs from the program input `.in` file.  
-```bash
-leo execute {$TRANSITION}
-```
 
 To execute a Leo transition function with inputs from the command line.
 `{$INPUTS}` should be a list of inputs to the program separated by spaces.
@@ -165,7 +156,7 @@ This command synthesizes the program circuit and generates proving and verifying
  Leo ✅ Compiled 'main.leo' into Aleo instructions
 
 ⛓  Constraints
- • 'hello.aleo/main' - 35 constraints (called 1 time)
+ • 'hello.aleo/main' - 33 constraints (called 1 time)
 
 ➡️  Output
  • 3u32
@@ -174,6 +165,36 @@ This command synthesizes the program circuit and generates proving and verifying
  
  Leo ✅ Executed 'hello.aleo/main' (in "/hello/build")
 ```
+
+## `leo add`
+:::tip
+Use this command to add a dependency to your program. This is a precursor to being able to import a program inside the leo source code file. 
+:::
+
+To add an already deployed program as a project dependency.
+`{$PROGRAM}` should be the name of the program to add as a dependency.
+```bash
+leo add {$PROGRAM} // {$NETWORK} defaults to `testnet`.
+leo add -n {$NETWORK} {$PROGRAM} // To pull from a custom network. 
+```
+
+To add a local Leo program as a project dependency.
+`{$PATH}` should be the relative path to the dependency project directory.
+```bash
+leo add -l {$PATH} {$PROGRAM} 
+```
+
+## `leo deploy`
+:::tip
+Use this command to deploy a program to the Aleo network. This requires having a funded account. 
+:::
+
+To deploy the project in the current working directory.
+```bash
+leo deploy // Defaults to using key information in `.env`, and deploys to `testnet3` via endoint `http://api.explorer.provable.com/v1`.
+leo deploy --endpoint "{$ENDPOINT}" --private-key "{$PRIVATE_KEY}" // To deploy using custom private key, to a custom endpoint (e.g. local devnet `http://0.0.0.0:3030`).
+```
+
 ## `leo clean`
 
 To clean the build directory, run:
@@ -233,7 +254,7 @@ leo account new --write
 
 To list all options
 
-```bash
+```
 leo account --help
 
 # Output:

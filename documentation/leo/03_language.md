@@ -43,7 +43,7 @@ let b: u8 = 1u8;
 Underscores `_` can be used to separate digits in integer literals.
 
 ```leo
-let b: u8 = 1_000_000u64;
+let n: u64 = 1_000_000u64;
 ```
 
 :::info
@@ -58,7 +58,7 @@ Leo will not default to an integer type. The definition of an integer **must** i
 ```leo
 let a: u8 = 2u8; // explicit type
 let b: u16 = a as u16; // type casting
-let b: u8 = 2; // implicit type -- not supported
+let c: u8 = 2; // implicit type -- not supported
 ```
 
 ### Field Elements
@@ -94,8 +94,7 @@ let g: group = group::GEN; // the group generator
 ### Scalar Elements
 
 Leo supports the `scalar` type for elements of the scalar field defined by the elliptic curve subgroup.
-These are unsigned integers less than the modulus of the scalar field. Showing the smallest and largest
-scalars.
+These are unsigned integers less than the modulus of the scalar field. The following are the smallest and largest scalars.
 
 ```leo
 let a: scalar = 0scalar;
@@ -113,9 +112,9 @@ let receiver: address = aleo1ezamst4pjgj9zfxqq0fwfj8a4cjuqndmasgata3hggzqygggnyf
 
 ### Signatures
 
-Aleo uses a Schnorr signatures scheme to sign messages with an Aleo private key.
-Signatures in Leo have their own type `signature` and can be declared as literals `sign069ju4e8s66unu25celqycvsv3k9chdyz4n4sy62tx6wxj0u25vqp58hgu9hwyqc63qzxvjwesf2wz0krcvvw9kd9x0rsk4lwqn2acqhp9v0pdkhx6gvkanuuwratqmxa3du7l43c05253hhed9eg6ppzzfnjt06fpzp6msekdjxd36smjltndmxjndvv9x2uecsgngcwsc2qkns4afd`.  
-Signatures can be verified in Leo using the [`signature::verify` or `s.verify`](./04_operators.md#signatureverify) operators.
+Aleo uses the Schnorr signature scheme to sign messages with an Aleo private key.
+Signatures are a native type in Leo, and can be declared with the keyword `signature`.
+Signatures can be verified in Leo using the [`signature::verify`](./04_operators.md#signatureverify) or [`s.verify`](./04_operators.md#signatureverify) operators.
 
 ```leo
 program test.aleo {
@@ -141,22 +140,23 @@ program test.aleo {
 
 ## Layout of a Leo Program
 
-A Leo program contains declarations of a [Program Scope](#program-scope), [Constants](#constant), [Imports](#import)
-, [Transition Functions](#transition-function), [Helper Functions](#helper-function), [Structs](#struct)
-, [Records](#record),
-[Mappings](#mapping), and [Finalize Functions](#finalize-function).
+A Leo program contains declarations of a [Program](#program), [Constants](#constant), [Imports](#import)
+, [Transition Functions](#transition-function), [Async Functions](#async-function), [Helper Functions](#helper-function), [Structs](#struct)
+, [Records](#record), and [Mappings](#mapping).
 Declarations are locally accessible within a program file.
 If you need a declaration from another Leo file, you must import it.
 
-### Program Scope
+### Program 
 
-A program scope in the sense of Leo is a collection of code (its functions) and data (its types) that resides at a
-[program ID](#program-id) on the Aleo blockchain.
+A program is a collection of code (its functions) and data (its types) that resides at a
+[program ID](#program-id) on the Aleo blockchain. A program is declared as `program {name}.{network} { ... }`.
+The body of the program is delimited by curly braces `{}`.
 
 ```leo
-import foo.leo;
+import foo.aleo;
 
 program hello.aleo {
+    const FOO: u64 = 1u64;
     mapping account: address => u64;
 
     record token {
@@ -169,17 +169,17 @@ program hello.aleo {
         object: u64,
     }
 
-    transition mint_public(
+    async transition mint_public(
         public receiver: address,
         public amount: u64,
-    ) -> token {
-        return token {
+    ) -> (token, Future) {
+        return (token {
             owner: receiver,
             amount,
-        } then finalize(receiver, amount);
+        }, update_state(receiver, amount));
     }
 
-    finalize mint_public(
+    async function update_state(
         public receiver: address,
         public amount: u64,
     ) {
@@ -188,12 +188,12 @@ program hello.aleo {
    }
 
     function compute(a: u64, b: u64) -> u64 {
-        return a + b;
+        return a + b + FOO;
     }
 }
 ```
 
-The following must be declared inside the program scope in a Leo file:
+The following must be declared inside the scope of a program in a Leo file:
 
 - constants
 - mappings
@@ -201,16 +201,16 @@ The following must be declared inside the program scope in a Leo file:
 - struct types
 - transition functions
 - helper functions
-- finalize functions
+- async functions
 
-The following must be declared outside the program scope in a Leo file:
+The following must be declared outside the scope of a program in a Leo file:
 
 - imports
 
 #### Program ID
 
 A program ID is declared as `{name}.{network}`.
-The first character of a `name` must be lowercase.
+The first character of a `name` must be a lowercase letter.
 `name` can contain lowercase letters, numbers, and underscores.
 Currently, `aleo` is the only supported `network` domain.
 
@@ -228,7 +228,7 @@ program _foo.aleo;  // invalid
 
 A constant is declared as `const {name}: {type} = {expression};`.  
 Constants are immutable and must be assigned a value when declared.  
-Constants can be declared in the global program scope or in a local function scope.  
+Constants can be declared in the global scope or in a local function scope.  
 
 ```leo
 program foo.aleo {
@@ -244,18 +244,11 @@ program foo.aleo {
 ### Import
 
 You can import dependencies that are downloaded to the `imports` directory.
-An import is declared as `import {filename}.leo;`
-This will look for `imports/{filename}.leo` and bring all declarations into the current file scope.
-If there are duplicate names for declarations, Leo will fail to compile.
-Ordering is enforced for imports, which must be at the top of file.
-
-:::caution
-Leo imports are unstable and currently only provide minimal functionality.
-Their syntax is expected to change.
-:::
+An import is declared as `import {filename}.aleo;`
+The dependency resolver will pull the imported program from the network or the local filesystem.
 
 ```leo showLineNumbers
-import foo.leo; // Import all `foo.leo` declarations into the `hello.aleo` program.
+import foo.aleo; // Import all `foo.aleo` declarations into the `hello.aleo` program.
 
 program hello.aleo { }
 ```
@@ -296,9 +289,9 @@ record token {
 
 ### Array
 
-Leo supports static arrays. Arrays are declared as `[type; length]` and can be nested. Arrays cannot be empty nor modified.
+Leo supports static arrays. Array types are declared as `[type; length]` and can be nested. Arrays cannot be empty nor modified.
 
-Arrays only support constant accesses (the index must be a constant value). The accessor value must be a constant integer.
+Arrays only support constant accesses. The accessor expression must be a constant integer.
 
 Arrays can contain primitive data types, structs, or arrays. Structs and records can also contain arrays.
 
@@ -308,14 +301,14 @@ Arrays can be iterated over using a for loop.
 // Initalize a boolean array of length 4
 let arr: [bool; 4] = [true, false, true, false];
 
-// Nested Array
+// Nested array
 let nested: [[bool; 2]; 2] = [[true, false], [true, false]];
 
-// Array of Structs
 struct bar {
     data: u8,
 }
 
+// Array of structs
 let arr_of_structs: [bar; 2] = [bar { data: 1u8 }, bar { data: 2u8 }];
 
 // Access the field of a struct within an array
@@ -334,7 +327,7 @@ record floo {
     data: [u8; 8],
 }
 
-// Declare a mapping that contains an array value
+// Declare a mapping that contains array values
 mapping data: address => [bool; 8];
 
 // Iterate over an array using a for loop and sum the values within
@@ -349,7 +342,7 @@ transition sum_with_loop(a: [u64; 4]) -> u64 {
 
 ### Tuple
 
-Leo supports tuples. Tuples are declared as `(type1, type2, ...)` and can be nested. Tuples cannot be empty nor modified.
+Leo supports tuples. Tuple types are declared as `(type1, type2, ...)` and can be nested. Tuples cannot be empty or modified.
 
 Tuples only support constant access with a dot `.` and a constant integer.
 
@@ -371,6 +364,7 @@ Transition functions in Leo are declared as `transition {name}() {}`.
 Transition functions can be called directly when running a Leo program (via `leo run`).
 Transition functions contain expressions and statements that can compute values.
 Transition functions must be in a program's current scope to be called.
+Transition functions that call [async functions](#async-function) to execute code on-chain must be declared as `async transition`.
 
 ```leo showLineNumbers
 program hello.aleo {
@@ -385,7 +379,7 @@ program hello.aleo {
 
 #### Function Inputs
 
-A function input is declared as `{visibility} {name}: {type},`
+A function input is declared as `{visibility} {name}: {type}`.
 Function inputs must be declared just after the function name declaration, in parentheses.
 
 ```leo showLineNumbers
@@ -408,11 +402,11 @@ transition foo(public a: field) -> field {
 
 ### Helper Function
 
-A helper function is declared as `function {name}() {}`.
+A helper function is declared as `function {name}({arguments}) {}`.
 Helper functions contain expressions and statements that can compute values,
 however helper functions cannot produce `records`.
 
-Helper functions cannot be called directly from the outside. Instead, they must be called by other functions.
+Helper functions cannot be called directly. Instead, they must be called by other functions.
 Inputs of helper functions cannot have `{visibility}` modifiers like transition functions,
 since they are used only internally, not as part of a program's external interface.
 
@@ -446,24 +440,23 @@ inline foo(
 
 The rules for functions (in the traditional sense) are as follows:
 
-- There are three variants of functions: transition, function, inline.
-- transitions can only call functions and inlines.
-- functions can only call inlines.
-- inlines can only call inlines.
-- Direct/indirect recursive calls are not allowed
+- There are three variants of functions: `transition`, `function`, `inline`.
+- A `transition` can only call a `function`, `inline`, or external `transition`.
+- A `function` can only call an `inline`.
+- An `inline` can only call another `inline`.
+- Direct/indirect recursive calls are not allowed.
 
-### Finalize Function
+### Async Function
 
-A finalize function is declared as `finalize {name}:` and is used to run computations on chain. One of its primary purposes is to initiate or change public on chain state within mappings. A finalize function must immediately follow a [transition function](#transition-function), and must have the same name;
-it is associated with the transition function and is executed on chain,
-after the zero-knowledge proof of the execution of the associated transition is verified;
-a finalize function _finalizes_ a transition function on chain.
-Upon success of the finalize function, the program logic is executed.
-Upon failure of the finalize function, the program logic is reverted.
+An async function is declared as `async function` and is used to define computation run on-chain. 
+A call to an async function returns a [`Future`](#future) object.
+It is asynchronous because the code gets executed at a later point in time. 
+One of its primary uses is to initiate or change public on chain state within mappings.
+An async function can only be called by an async [transition function](#transition-function) and is executed on chain, after the zero-knowledge proof of the execution of the associated transition is verified.
+Async functions are atomic; they either succeed or fail, and the state is reverted if they fail.
 
-Consequently, nodes on the Aleo network execute the code of the finalize function. Only code within finalize blocks, run by nodes on the Aleo Network, updates program mappings. Only a program can write into its own mapping, but all nodes on the Aleo network can read the public state.
 
-An example of on-chain state mutation is the transfer_public_to_private transition in the finalize example, which updates the public account mapping (and thus a user's balance) when called.
+An example of using an async function to perform on-chain state mutation is in the `transfer_public_to_private` transition below, which updates the public account mapping (and thus a user's balance) when called.
 
 ```leo showLineNumbers
 program transfer.aleo {
@@ -471,11 +464,11 @@ program transfer.aleo {
     // from `account` into a token record for the specified receiver.
     //
     // This function preserves privacy for the receiver's record, however
-    // it publicly reveals the caller and the specified token amount.
-    transition transfer_public_to_private(
-        public receiver: address,
+    // it publicly reveals the sender and the specified token amount.
+    async transition transfer_public_to_private(
+        receiver: address,
         public amount: u64
-    ) -> token {
+    ) -> (token, Future) {
         // Produce a token record for the token receiver.
         let new: token = token {
             owner: receiver,
@@ -483,10 +476,10 @@ program transfer.aleo {
         };
 
         // Return the receiver's record, then decrement the token amount of the caller publicly.
-        return new then finalize(self.caller, amount);
+        return (new, update_public_state(self.caller, amount));
     }
 
-    finalize transfer_public_to_private(
+    async function update_public_state(
         public sender: address,
         public amount: u64
     ) {
@@ -499,9 +492,9 @@ program transfer.aleo {
 }
 ```
 
-If there is no need to create or alter the public on-chain state, finalize functions are not required.
+If there is no need to create or alter the public on-chain state, async functions are not required.
 
-### Mapping
+### Mappings
 
 A mapping is declared as `mapping {name}: {key-type} => {value-type}`.
 Mappings contain key-value pairs.
@@ -516,30 +509,9 @@ mapping account: address => u64;
 
 #### Mapping Operations
 
-The mapping struct allows the programmer to apply updates to a program mapping data structure by calling one of the
-following functions.
+Mappings can be read from and modified by calling one of the following functions.
 
-:::info
-Mapping operations are only allowed in a [finalize function](#finalize-function).
-:::
 
-```leo showLineNumbers
-program test.aleo {
-    mapping counter: address => u64;
-
-    transition dubble() {
-        return then finalize(self.caller);
-    }
-
-    finalize dubble(addr: address) {
-        let current_value: u64 = Mapping::get_or_use(counter, addr, 0u64);
-        Mapping::set(counter, addr, current_value + 1u64);
-        current_value = Mapping::get(counter, addr);
-        Mapping::set(counter, addr, current_value + 1u64);
-    }
-
-}
-```
 
 #### get
 
@@ -549,10 +521,10 @@ If the value at `addr` does not exist, then the program will fail to execute.
 
 #### get_or_use
 
-A get command that uses the provided default in case of failure,  
+A get command that uses the provided default if the key is not present in the mapping,  
 e.g. `let current_value: u64 = Mapping::get_or_use(counter, addr, 0u64);`  
 Gets the value stored at `addr` in `counter` and stores the result in `current_value`.
-If the key is not present, `0u64` is stored in `counter` and stored in `current_value`.
+If the key is not present, `0u64` is stored in `counter` (associated to the key) and in `current_value`.
 
 #### set
 
@@ -569,13 +541,70 @@ Returns `true` if `addr` is present in `counter`, `false` otherwise.
 A remove command, e.g. `Mapping::remove(counter, addr);`
 Removes the entry at `addr` in `counter`.
 
-## For Loops
+#### Usage 
 
-For Loops are declared as `for {variable: type} in {lower bound}..{upper bound}`. Unsigned integer
-types `u8`, `u16`, and `u32` are recommended for loop variable types. The lower bound must be
+:::info
+Mapping operations are only allowed in an [async function](#async-function).
+:::
+
+```leo showLineNumbers
+program test.aleo {
+    mapping counter: address => u64;
+
+    async transition dubble() -> Future {
+        return update_mappings(self.caller);
+    }
+
+    async function update_mappings(addr: address) {
+        let current_value: u64 = Mapping::get_or_use(counter, addr, 0u64);
+        Mapping::set(counter, addr, current_value + 1u64);
+        current_value = Mapping::get(counter, addr);
+        Mapping::set(counter, addr, current_value + 1u64);
+    }
+
+}
+```
+## Control Structures
+
+### If Statements
+
+If statements are declared as `if {condition} { ... } else if {condition} { ... } else { ... }`.
+If statements can be nested.
+
+```leo
+    let a: u8 = 1u8;
+    
+    if a == 1u8 {
+        a += 1u8;
+    } else if a == 2u8 {
+        a += 2u8;
+    } else {
+        a += 3u8;
+    }
+```
+
+### Return Statements
+
+Return statements are declared as `return {expression};`.
+
+```leo
+    let a: u8 = 1u8;
+    
+    if a == 1u8 {
+        return a + 1u8;
+    } else if a == 2u8 {
+        return a + 2u8;
+    } else {
+        return a + 3u8;
+    }
+```
+
+
+### For Loops
+
+For loops are declared as `for {variable: type} in {lower bound}..{upper bound}`. The loop bounds must be integer constants of the same type. Furthermore, the lower bound must be
 less than the upper bound. Nested loops are supported.
 
-### Example
 
 ```leo
   let count: u32 = 0u32;
@@ -590,13 +619,11 @@ less than the upper bound. Nested loops are supported.
 ## Operators
 
 Operators in Leo compute a value based off of one or more expressions.
-Leo will try to detect arithmetic operation errors as soon as possible.
-If an integer overflow or division by zero can be identified at compile time, Leo will quickly tell the programmer.
-Otherwise, the error will be caught at proving time when transition function inputs are processed.
+Leo defaults to checked arithmetic, which means that it will throw an error if an overflow or division by zero is detected.
 
 For instance, addition adds `first` with `second`, storing the outcome in `destination`.
 For integer types, a constraint is added to check for overflow.
-For cases where wrapping semantics are needed for integer types, see the `Add Wrapped` operator.
+For cases where wrapping semantics are needed for integer types, see the wrapped variants of the operators.
 
 ```leo
 let a: u8 = 1u8 + 1u8;
@@ -609,59 +636,7 @@ a = a.add(1u8);
 // a is now equal to 4
 ```
 
-### Arithmetic Operators
-
-|                                  Operation                                   |      Operands       |                                   Supported Types                                    |
-| :--------------------------------------------------------------------------: | :-----------------: | :----------------------------------------------------------------------------------: |
-|                                   addition                                   |  `+` `+=` `.add()`  | `field` `group` `scalar` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|                              wrapping addition                               |  `.add_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                               negation(unary)                                |    `-` `.neg()`     |                    `field` `group` `i8` `i16` `i32` `i64` `i128`                     |
-|                             subtraction(binary)                              |  `-` `-=` `.sub()`  |     `field` `group` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`      |
-|                         wrapping subtraction(binary)                         |  `.sub_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                                multiplication                                |  `*` `*=` `.mul()`  | `field` `group` `scalar` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|                           wrapping multiplication                            |  `.mul_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                                   division                                   |  `/` `/=` `.div()`  |         `field` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`          |
-|                              wrapping division                               |  `.div_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                                  remainder                                   |  `%` `%=` `.rem()`  |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                              wrapping remainder                              |  `.rem_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                                exponentiation                                | `**` `**=` `.pow()` |         `field` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`          |
-|                           wrapping exponentiation                            |  `.pow_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|          [left shift](https://developer.aleo.org/leo/operators#shl)          | `<<` `<<=` `.shl()` |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-| [wrapping left shift](https://developer.aleo.org/leo/operators#shl_wrapped)  |  `.shl_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|         [right shift](https://developer.aleo.org/leo/operators#shr)          | `>>` `>>=` `.shr()` |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-| [wrapping right shift](https://developer.aleo.org/leo/operators#shr_wrapped) |  `.shr_wrapped()`   |             `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128`              |
-|                                absolute value                                |      `.abs()`       |                            `i8` `i16` `i32` `i64` `i128`                             |
-|                           wrapping absolute value                            |  `.abs_wrapped()`   |                            `i8` `i16` `i32` `i64` `i128`                             |
-|                                   doubling                                   |     `.double()`     |                                   `field` `group`                                    |
-|                                   squaring                                   |     `.square()`     |                                       `field`                                        |
-|                                 square root                                  |  `.square_root()`   |                                       `field`                                        |
-|                                   inverse                                    |  `.square_root()`   |                                       `field`                                        |
-
-### Logical Operators
-
-|    Operation    |                     Operands                     |                          Supported Types                           |
-| :-------------: | :----------------------------------------------: | :----------------------------------------------------------------: |
-|       NOT       |                   `!` `.not()`                   | `bool` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|       AND       |                `&` `&=` `.and()`                 | `bool` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|       OR        | <code>&#124;</code> <code>&#124;=</code> `.or()` | `bool` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|       XOR       |                `^` `^=` `.xor()`                 | `bool` `i8` `i16` `i32` `i64` `i128` `u8` `u16` `u32` `u64` `u128` |
-|      NAND       |                    `.nand()`                     |                               `bool`                               |
-|       NOR       |                     `.nor()`                     |                               `bool`                               |
-| conditional AND |                       `&&`                       |                               `bool`                               |
-| conditional OR  |            <code>&#124;&#124;</code>             |                               `bool`                               |
-
-### Relational Operators
-
-Relational operators will always resolve to a boolean `bool` value.
-
-|       Operation       |   Operands    |                         Supported Types                         |
-| :-------------------: | :-----------: | :-------------------------------------------------------------: |
-|         equal         | `==` `.eq()`  | `bool`, `group`, `field`, integers, addresses, structs, records |
-|       not-equal       | `!=` `.neq()` | `bool`, `group`, `field`, integers, addresses, structs, records |
-|       less than       |  `<` `.lt()`  |                   `field`, `scalar`, integers                   |
-|  less than or equal   | `<=` `.lte()` |                   `field`, `scalar`, integers                   |
-|     greater than      |  `>` `.gt()`  |                   `field`, `scalar`, integers                   |
-| greater than or equal | `>=` `.gte()` |                   `field`, `scalar`, integers                   |
+See the [Operator Reference](./04_operators.md) for a complete list of operators.
 
 ### Operator Precedence
 
@@ -693,17 +668,13 @@ let result = (a + 1u8) * 2u8;
 
 `(a + 1u8)` will be evaluated before multiplying by two `* 2u8`.
 
-## Commands
+## Context-dependent Expressions
 
-Leo supports several commands that can be used to reference information about the Aleo blockchain and the current transaction.
+Leo supports several expressions that can be used to reference information about the Aleo blockchain and the current transaction.
 
 ### self.caller
 
-:::note
-`self.caller` is currently implemented as `self.signer` within Aleo instructions. This will be fixed in a upcoming release.
-:::
-
-Returns the address of the account that is calling the program function.
+Returns the address of the account/program that invoked the current `transition`.
 
 ```leo showLineNumbers
 program test.aleo {
@@ -713,19 +684,33 @@ program test.aleo {
 }
 ```
 
+### self.signer
+
+Returns the address of the account that invoked that top-level `transition`. This is the account that signed the transaction.
+
+```leo showLineNumbers
+program test.aleo {
+    transition matches(addr: address) -> bool {
+        return self.signer == addr;
+    }
+}
+```
+
 ### block.height
 
 Returns the height of the current block.
 
 :::info
-`block.height` is only allowed in a [finalize function](#finalize-function).
+`block.height` is only allowed in an [async function](#async-function).
 :::
 
 ```leo showLineNumbers
 program test.aleo {
-    transition matches(height: u32) {
-        return then finalize(height);
-    } finalize matches(height: u32) {
+    async transition matches(height: u32) -> Future {
+        return check_block_height(height);
+    } 
+    
+    async function check_block_height(height: u32) {
         assert_eq(height, block.height);
     }
 }
@@ -734,7 +719,7 @@ program test.aleo {
 ## Core Functions
 
 Core functions are functions that are built into the Leo language.
-They are used to perform cryptographic operations such as hashing, commitment, and random number generation.
+They are used to check assertions and perform cryptographic operations such as hashing, commitment, and random number generation.
 
 ### Assert and AssertEq
 
@@ -753,7 +738,7 @@ program test.aleo {
 ### Hash
 
 Leo supports the following hashing algorithms: `BHP256`, `BHP512`, `BHP768`, `BHP1024`, `Pedersen64`, `Pedersen128`, `Poseidon2`, `Poseidon4`, `Poseidon8`, `Keccak256`, `Keccak384`, `Keccak512`, `SHA3_256`, `SHA3_384`, `SHA3_512`.  
-The output type of a commitment function is specified in the function name. e.g. `hash_to_group` will return a `group` type.
+The output type of a hash function is specified in the function name. e.g. `hash_to_group` will return a `group` type.
 Hash functions take any type as an argument.
 
 ```leo showLineNumbers
@@ -783,7 +768,7 @@ Leo supports the `ChaCha` random number generation algorithm.
 The output type of a random function is specified in the function name. e.g. `rand_group` will return a `group` type.
 
 :::info
-Random functions are only allowed in a [finalize function](#finalize-function).
+Random functions are only allowed in an [async function](#async-function).
 :::
 
 ```leo showLineNumbers
@@ -800,31 +785,7 @@ let b: u32 = ChaCha::rand_u32();
 `increment()` and `decrement()` functions are deprecated as of Leo v1.7.0.
 Please use the [`Mapping::set()`](#set) function instead.
 
-```leo showLineNumbers
-program transfer.aleo {
-    // On-chain storage of an `account` map,
-    // with `address` as the key,
-    // and `u64` as the value.
-    mapping account: address => u64;
+#### Finalize 
 
-    transition transfer_public(...) {...}
-
-    finalize transfer_public(
-        public sender: address,
-        public receiver: address,
-        public amount: u64
-    ) {
-        // Decrements `account[sender]` by `amount`.
-        // If `account[sender]` does not exist, it will be created.
-        // If `account[sender] - amount` underflows, `transfer_public` is reverted.
-        let sender_amount: u64 = Mapping::get_or_use(account, sender, 0u64);
-        Mapping::set(account, sender, sender_amount - amount);
-
-        // Increments `account[receiver]` by `amount`.
-        // If `account[receiver]` does not exist, it will be created.
-        // If `account[receiver] + amount` overflows, `transfer_public` is reverted.
-        let receiver_amount: u64 = Mapping::get_or_use(account, receiver, 0u64);
-        Mapping::set(account, receiver, receiver_amount + amount);
-    }
-}
-```
+`finalize` and the associated programming model is deprecated as of Leo v2.0.0.
+Please use an [`async function`](#async-function) instead.
