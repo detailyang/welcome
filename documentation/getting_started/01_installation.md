@@ -1,6 +1,7 @@
 ---
 id: installation
 title: Installation
+sidebar: Installation
 ---
 
 import Tabs from '@theme/Tabs';
