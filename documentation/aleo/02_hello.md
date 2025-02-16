@@ -112,7 +112,7 @@ First, we need to declare the program as the following:
 program foo.aleo;
 ```
 
-Afterwards, we can start writing its functions (or other Aleo structures such as structs, records, closures, as we will see later).
+Afterwards, we can start writing its functions (or other Aleo constructs such as structs, records, closures, as we will see later).
 
 In the case of functions we have it very easy:
 
@@ -206,7 +206,7 @@ function sum_one_to_array3:
 
 As you can see, we can input a struct into register `r0` and access struct elements with the `.` syntax. We perform the `add` instruction on every element, storing the results in registers `r1`, `r2` and `r3` and, finally, we make use of the cast command to create a new `array3` struct into `r4`.
 
-Now, let's run it. In this case, the only new thing you need to know is that structs are passed to the cli in the following format:
+Now, let's run it. In this case, the only new thing you need to know is that structs are passed to the CLI in the following format:
 
 ```bash
 "{a0: 1u32, a1: 2u32, a2: 3u32}"
@@ -243,7 +243,7 @@ The `owner` refers to the Aleo address that owns the record.
 
 Records are important because they represent the basic Aleo structure to handle state in your application.
 
-When running an Aleo function, only registers that belong to the application address can be passed as input registers. Otherwise, an error is raised and the application doesn't run.
+When running an Aleo transition function, only records that belong to the application address can be passed as input registers. Otherwise, an error is raised and the application doesn't run.
 
 You can find your development application address inside the `.env` file:
 
