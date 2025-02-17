@@ -1,7 +1,7 @@
 ---
 id: hello
-title: Hello Leo
-sidebar_label: Hello Leo
+title: Hello, Leo
+sidebar_label: Hello, Leo
 ---
 
 Use the Leo Command Line Interface (CLI) to create a new project.

@@ -1,5 +1,7 @@
 ---
-id: doku
-title: doku.js
-sidebar_label: doku.js
+id: doko
+title: doko.js
+sidebar_label: doko.js
 ---
+
+Coming soon!
