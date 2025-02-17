@@ -1,7 +1,7 @@
 ---
 id: whats_new 
-title: What's New? 
-sidebar_label: 
+title: Latest in Leo 
+sidebar_label: What's New?
 ---
 
 Welcome to the Aleo community. Together we are working to build a platform for web applications that are
