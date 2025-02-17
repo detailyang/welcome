@@ -591,9 +591,9 @@ The instruction will halt if the given `Struct` value exceeds the 128-bit limit.
 
 #### Description
 
-Divides `first` by `second`, storing the outcome in `destination`. Halts on division by zero.
+Divides `first` by `second`, storing the outcome in `destination`. Halts on division by zero and underflow.
 
-For integer types, this operation performs truncated division. Furthermore, a constraint is added to check for underflow. This underflow happens when dividing the minimum value of a signed integer type by `-1`. For example, `div -128i8 -1i8` would result in underflow, since `128` cannot be represented as an `i8`.
+For integer types, this operation performs truncated division. Furthermore, a constraint is added to check for underflow. This underflow happens when dividing the minimum value of a signed integer type by `-1`. For example, `div -128i8 -1i8` would result in underflow, since `128` cannot be represented as an `i8`. 
 
 For cases where wrapping semantics are needed for integer types, see the [div.w](#div.w) instruction.
 
@@ -621,7 +621,7 @@ For cases where wrapping semantics are needed for integer types, see the [div.w]
 
 #### Description
 
-Divides `first` by `second`, wrapping around at the boundary of the type, and storing the outcome in `destination`.
+Divides `first` by `second`, wrapping around at the boundary of the type, and storing the outcome in `destination`. Halts on division by zero.
 
 #### Supported Types
 
@@ -1501,6 +1501,7 @@ Performs an OR operation on integer (bitwise) or boolean `first` and `second`, s
 #### Description
 
 The position declaration, e.g. `position <name>`, which indicates a location `name` in the program to branch execution to.  
+This opcode is only avaialable in an on-chain context (`async function`).
 Positions must be a lowercase alphanumeric string.  
 
 ***
@@ -1593,7 +1594,7 @@ Single can be any of the following types `Address`, `Boolean`, `Field`, `Group`,
 
 #### Description
 
-Computes the truncated remainder of `first` divided by `second`, storing the outcome in `destination`. Halts on division by zero.
+Computes the truncated remainder of `first` divided by `second`, storing the outcome in `destination`. Halts on division by zero and underflow.
 
 
 A constraint is added to check for underflow.  This underflow happens when the associated division operation, [div](#div), underflows.
@@ -1622,7 +1623,7 @@ For cases where wrapping semantics are needed for integer types, see the [rem.w]
 [Back to Top](#table-of-standard-opcodes)
 
 #### Description
-Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the outcome in destination.
+Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the outcome in destination. Halts on division by zero.
 
 #### Supported Types
 
@@ -1669,7 +1670,7 @@ sign.verify r0 r1 r2 into r3;
 
 #### Description
 
-Shifts `first` left by `second` bits, storing the outcome in `destination`.
+Shifts `first` left by `second` bits, storing the outcome in `destination`. Halts if the multiplication or exponentiation represented by the shift overflows.
 
 #### Supported Types
 
@@ -1723,7 +1724,7 @@ Shifts `first` left by `second` bits, wrapping around at the boundary of the typ
 
 #### Description
 
-Shifts `first` right by `second` bits, storing the outcome in `destination`.
+Shifts `first` right by `second` bits, storing the outcome in `destination`. Halts when the value of `second` exceeds the number of bits in `first`
 
 #### Supported Types
 
@@ -1793,7 +1794,7 @@ Squares the input, storing the outcome in `destination`.
 
 #### Description
 
-Computes the square root of the input, storing the outcome in `destination`.
+Computes the square root of the input, storing the outcome in `destination`. Halts if no square root exists (the element is a quadratic non-residue).
 
 #### Supported Types
 

@@ -291,7 +291,7 @@ record token {
 
 Leo supports static arrays. Array types are declared as `[type; length]` and can be nested. Arrays cannot be empty nor modified.
 
-Arrays only support constant accesses. The accessor expression must be a constant integer.
+Arrays only support constant accesses. The accessor expression must be a constant expression.
 
 Arrays can contain primitive data types, structs, or arrays. Structs and records can also contain arrays.
 
