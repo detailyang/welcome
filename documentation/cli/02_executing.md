@@ -1,6 +1,6 @@
 ---
-id: commands
-title: The Leo Command Line Interface
-sidebar_label: Commands
+id: execute
+title: Run Your Programs
+sidebar_label: Execute 
 ---
 

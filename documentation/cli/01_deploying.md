@@ -1,5 +1,5 @@
 ---
-id: commands
-title: The Leo Command Line Interface
-sidebar_label: Commands
+id: deploy
+title: Deploy Your Programs 
+sidebar_label: Deploy
 ---

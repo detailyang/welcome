@@ -1,6 +1,6 @@
 ---
-id: commands
-title: The Leo Command Line Interface
-sidebar_label: Commands
+id: dependencies 
+title: Dependency Management
+sidebar_label: Dependency Management
 ---
 

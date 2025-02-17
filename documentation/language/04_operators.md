@@ -1,6 +1,6 @@
 ---
 id: operators
-title: Leo Operators Reference
+title: Operators 
 sidebar_label: Operators
 ---
 

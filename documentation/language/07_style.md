@@ -5,10 +5,6 @@ sidebar: Style Guide
 ---
 
 
-
-
-
-
 ### Looking for [More Aleo Resources?](../00_getting_started.md)
 
 ## Style Guide

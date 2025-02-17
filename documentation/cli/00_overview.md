@@ -1,7 +1,7 @@
 ---
-id: commands
+id: overview 
 title: The Leo Command Line Interface
-sidebar_label: Commands
+sidebar_label: Overview 
 ---
 
 The Leo CLI is a command line interface tool that comes equipped with the Leo compiler.

@@ -1,5 +1,5 @@
 ---
-id: sdk
+id: overview
 title: Aleo SDK
 sidebar_label: Overview
 ---

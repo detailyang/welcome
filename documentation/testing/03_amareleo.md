@@ -1,5 +1,5 @@
 ---
-id: amaraleo
+id: amareleo
 title: Amareleo
 sidebar_label: Amareleo
 ---

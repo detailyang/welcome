@@ -1,7 +1,7 @@
 ---
-id: language
-title: Leo Language Guide
-sidebar_label: Language
+id: data_types
+title: Data Types
+sidebar_label: Data Types
 ---
 
 ### Statically Typed

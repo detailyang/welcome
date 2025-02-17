@@ -1,6 +1,6 @@
 ---
-id: commands
-title: The Leo Command Line Interface
-sidebar_label: Commands
+id: sign 
+title: Sign and Verify 
+sidebar_label: Sign and Verify 
 ---
 

@@ -1,6 +1,6 @@
 ---
-id: commands
-title: The Leo Command Line Interface
-sidebar_label: Commands
+id: query 
+title: Retrieving Network Metadata and State
+sidebar_label: Querying the Network
 ---
 
