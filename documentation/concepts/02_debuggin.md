@@ -214,10 +214,10 @@ Result: 3u32
 ✔ <b>Command?</b> · let p1: Point = point_math.aleo/create_point(1u32, 2u32);
 ✔ <b>Command?</b> · let p2: Point = point_math.aleo/create_point(3u32, 4u32);
 ✔ <b>Command?</b> · p1
-Result: Point {owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 1u32, y: 2u32}
+Result: Point {'{'}owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 1u32, y: 2u32}
 
 ✔ <b>Command?</b> · p2
-Result: Point {owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 3u32, y: 4u32}
+Result: Point {'{'}owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 3u32, y: 4u32}
 
 ✔ <b>Command?</b> · let distance: u32 = point_math.aleo/distance(p1, p2);
 ✔ Command? · distance
@@ -225,7 +225,7 @@ Result: 2u32
 
 ✔ <b>Command?</b> · let sum: Point = point_math.aleo/add_points(p1, p2);
 ✔ <b>Command?</b> · sum
-Result: Point {owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 4u32, y: 6u32}
+Result: Point {'{'}owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 4u32, y: 6u32}
 </code>
 </pre>
 
@@ -248,10 +248,10 @@ By setting a program scope, you can also directly invoke functions and interact 
 <code>
 ✔ <b>Command?</b> · #set_program point_math
 
-✔ <b>Command?</b> · let p: Point = Point { owner: self.caller, x: 1u32, y: 2u32 };
+✔ <b>Command?</b> · let p: Point = Point {'{'} owner: self.caller, x: 1u32, y: 2u32 };
 
 ✔ <b>Command?</b> · p
-Result: Point {owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 1u32, y: 2u32}
+Result: Point {'{'}owner: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, x: 1u32, y: 2u32}
 
 ✔ <b>Command?</b> · let a: u32 = sqrt_bitwise(0u32);
 

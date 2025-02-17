@@ -1,7 +1,7 @@
 ---
 id: curated
 title: Curated Resources 
-sidebar_label: Curated Resources
+sidebar_label: Curated 
 ---
 
 ## 1. The Aleo Workshop Repository
