@@ -1,8 +1,173 @@
 ---
 id: operators
-title: Operators 
-sidebar_label: Operators
+title: Operators and Expressions
+sidebar_label: Operators and Expressions
 ---
+
+## Operators
+
+Operators in Leo compute a value based off of one or more expressions.
+Leo defaults to checked arithmetic, which means that it will throw an error if an overflow or division by zero is detected.
+
+For instance, addition adds `first` with `second`, storing the outcome in `destination`.
+For integer types, a constraint is added to check for overflow.
+For cases where wrapping semantics are needed for integer types, see the wrapped variants of the operators.
+
+```leo
+let a: u8 = 1u8 + 1u8;
+// a is equal to 2
+
+a += 1u8;
+// a is now equal to 3
+
+a = a.add(1u8);
+// a is now equal to 4
+```
+
+See the [Operator Reference](./04_operators.md) for a complete list of operators.
+
+### Operator Precedence
+
+Operators will prioritize evaluation according to:
+
+|                                   Operator                                    | Associativity |
+| :---------------------------------------------------------------------------: | :-----------: |
+|                                `!` `-`(unary)                                 |               |
+|                                     `**`                                      | right to left |
+|                                    `*` `/`                                    | left to right |
+|                                `+` `-`(binary)                                | left to right |
+|                                   `<<` `>>`                                   | left to right |
+|                                      `&`                                      | left to right |
+|                              <code>&#124;</code>                              | left to right |
+|                                      `^`                                      | left to right |
+|                               `<` `>` `<=` `>=`                               |               |
+|                                   `==` `!=`                                   | left to right |
+|                                     `&&`                                      | left to right |
+|                           <code>&#124;&#124;</code>                           | left to right |
+| `=` `+=` `-=` `*=` `/=` `%=` `**=` `<<=` `>>=` `&=` <code>&#124;=</code> `^=` |               |
+
+### Parentheses
+
+To prioritize a different evaluation, use parentheses `()` around the expression.
+
+```leo
+let result = (a + 1u8) * 2u8;
+```
+
+`(a + 1u8)` will be evaluated before multiplying by two `* 2u8`.
+
+## Context-dependent Expressions
+
+Leo supports several expressions that can be used to reference information about the Aleo blockchain and the current transaction.
+
+### self.caller
+
+Returns the address of the account/program that invoked the current `transition`.
+
+```leo showLineNumbers
+program test.aleo {
+    transition matches(addr: address) -> bool {
+        return self.caller == addr;
+    }
+}
+```
+
+### self.signer
+
+Returns the address of the account that invoked that top-level `transition`. This is the account that signed the transaction.
+
+```leo showLineNumbers
+program test.aleo {
+    transition matches(addr: address) -> bool {
+        return self.signer == addr;
+    }
+}
+```
+
+### block.height
+
+Returns the height of the current block.
+
+:::info
+`block.height` is only allowed in an [async function](#async-function).
+:::
+
+```leo showLineNumbers
+program test.aleo {
+    async transition matches(height: u32) -> Future {
+        return check_block_height(height);
+    } 
+    
+    async function check_block_height(height: u32) {
+        assert_eq(height, block.height);
+    }
+}
+```
+
+## Core Functions
+
+Core functions are functions that are built into the Leo language.
+They are used to check assertions and perform cryptographic operations such as hashing, commitment, and random number generation.
+
+### Assert and AssertEq
+
+`assert` and `assert_eq` are used to verify that a condition is true.
+If the condition is false, the program will fail.
+
+```leo showLineNumbers
+program test.aleo {
+    transition matches() {
+        assert(true);
+        assert_eq(1u8, 1u8);
+    }
+}
+```
+
+### Hash
+
+Leo supports the following hashing algorithms: `BHP256`, `BHP512`, `BHP768`, `BHP1024`, `Pedersen64`, `Pedersen128`, `Poseidon2`, `Poseidon4`, `Poseidon8`, `Keccak256`, `Keccak384`, `Keccak512`, `SHA3_256`, `SHA3_384`, `SHA3_512`.  
+The output type of a hash function is specified in the function name. e.g. `hash_to_group` will return a `group` type.
+Hash functions take any type as an argument.
+
+```leo showLineNumbers
+let a: scalar = BHP256::hash_to_scalar(1u8);
+let b: address = Pedersen64::hash_to_address(1u128);
+let c: group = Poseidon2::hash_to_group(1field);
+```
+
+[See all hash functions](./04_operators.md#table-of-cryptographic-operators)
+
+### Commit
+
+Leo supports the following commitment algorithms: `BHP256`, `BHP512`, `BHP768`, `BHP1024`, `Pedersen64`, `Pedersen128`  
+The output type of a commitment function is specified in the function name. e.g. `commit_to_group` will return a `group` type.  
+The first argument can be any type. The second argument must be a `field` type and is used as a blinding factor.
+
+```leo showLineNumbers
+let a: group = BHP256::commit_to_group(1u8, 2field);
+let b: address = Pedersen64::commit_to_address(1u128, 2field);
+```
+
+[See all commitment functions](./04_operators.md#table-of-cryptographic-operators)
+
+### Random
+
+Leo supports the `ChaCha` random number generation algorithm.  
+The output type of a random function is specified in the function name. e.g. `rand_group` will return a `group` type.
+
+:::info
+Random functions are only allowed in an [async function](#async-function).
+:::
+
+```leo showLineNumbers
+let a: group = ChaCha::rand_group();
+let b: u32 = ChaCha::rand_u32();
+```
+
+[See all random functions](./04_operators.md#table-of-cryptographic-operators)
+
+
+
 
 The following lists show the standard and cryptographic operators supported by Leo.
 The Leo operators compile down to [Aleo instructions opcodes](../aleo/04_opcodes.md) executable by the Aleo Virtual Machine (AVM).

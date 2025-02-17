@@ -4,10 +4,6 @@ title: Latest in Leo
 sidebar_label: What's New?
 ---
 
-Welcome to the Aleo community. Together we are working to build a platform for web applications that are
-performant, secure, and private. Aleo introduces an application runtime environment that allows your software
-to compile, execute, and finalize its state autonomously.
-
 :::tip
 # What's new on Aleo?
 ### [**🔧 Getting Ready for Testnet Beta**](./leo/16_testnet_beta.md) - A guide on updating your Leo applications for Testnet Beta.

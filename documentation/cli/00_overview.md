@@ -22,19 +22,17 @@ The Leo CLI is a command line interface tool that comes equipped with the Leo co
 You can print the list of commands by running `leo --help`
 :::
 
-* [`example`](#leo-example) - Create a new Leo package from an example program.
-* [`new`](#leo-new) - Create a new Leo package in a new directory.
-* [`build`](#leo-build) - Compile the current package as a program.
-* [`run`](#leo-run) - Run a program with input variables.
-* [`execute`](#leo-execute) - Execute a program with input variables.
-* [`add`](#leo-add) - Add a new on-chain or local dependency to the current package.
-* [`deploy`](#leo-deploy) - Deploy a program.
-* [`clean`](#leo-clean) - Clean the output directory.
-* [`update`](#leo-update) - Update to the latest version of Leo.
 * [`account`](#leo-account) - Create a new Aleo account, sign and verify messages.
+* [`new`](#leo-new) - Create a new Leo project in a new directory.
+* [`build`](#leo-build) - Compile the current project.
+* [`run`](#leo-run) - Run a program without producing a proof.
+* [`execute`](#leo-execute) - Execute a program and produce a transaction containing a proof.
+* [`deploy`](#leo-deploy) - Generate proving and verifying keys and produce a transaction contianing the deployment.
+* [`add`](#leo-add) - Add a new on-chain or local dependency to the current project.
+* [`remove`](#leo-remove) - Remove a dependency from the current project.
+* [`clean`](#leo-clean) - Clean the build and output artifacts.
+* [`update`](#leo-update) - Update to the latest version of Leo.
 
-[//]: # (* [`deploy`]&#40;#leo-deploy&#41; - Deploy a program.)
-[//]: # (* [`node`]&#40;#leo-node&#41; - Start a local development server.)
 
 ## `leo example`
 
@@ -274,61 +272,3 @@ Options:
   -h, --help         Print help
 ```
 
-### `leo account sign`
-
-The `leo account sign` command enables developers and users to create cryptographic signatures using an Aleo private key. These signatures can be verified within leo using the [`signature::verify`](../leo/04_operators.md#signatureverify) function or with the `leo account verify` command.
-
-To generate a signature for Leo and Aleo values, run the following:
-
-```bash
-# replace `5field` with any aleo value
-leo account sign --private-key {$PRIVATE_KEY} -m 5field
-
-# Output:
-sign1...
-```
-
-To generate a signature for any plaintext, use the `--raw` flag:
-
-```bash
-# replace "Hello, Aleo" with any plaintext message
-leo account sign --private-key {$PRIVATE_KEY} -raw -m "Hello, Aleo"
-
-# Output:
-sign1...
-```
-
-There are a few alternatives to using the `--private-key` flag:
-
-- `--private-key-file <path/to/file>` - read a private key from a text file
-- no flags - read a private key from environment, or `.env`
-
-### `leo account verify`
-
-To complement with the [`leo account sign`](#leo-account-sign) command, the `leo account verify` command verifies the signatures of Aleo values and plaintext messages.
-
-To verify signed aleo values, run:
-
-```bash
-# replace `5field` with the message and `sign1signaturehere` with the signature
-leo account verify -a {$ADDRESS} -m 5field -s sign1signaturehere
-
-# Output:
-✅ The signature is valid
-
-# Error Output:
-Error [ECLI0377002]: cli error: ❌ The signature is invalid
-```
-
-To verify signatures of signed plaintext values, run:
-
-```bash
-# replace "Hello, Aleo" with the message and `sign1signaturehere` with the signature
-leo account verify -a {$ADDRESS} --raw -m "Hello, Aleo" -s sign1signaturehere
-
-# Output:
-✅ The signature is valid
-
-# Error Output:
-Error [ECLI0377002]: cli error: ❌ The signature is invalid
-```
