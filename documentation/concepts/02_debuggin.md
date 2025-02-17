@@ -270,14 +270,13 @@ The debugger also provides users with a number of "cheatcodes" to aid in debuggi
 
 The Leo debugger also provides a user with a more sophisticated GUI, which can help step through code cleanly. The interface can be enabled with the `--tui` command and provides better code visualization, where the current line is highlighted.
 
-<pre>
-<code>
+```
 ┌code──────────────────────────────────────────────────────────────────────────────────────────────────┐
 │    }                                                                                                 │
 │                                                                                                      │
 │    // An implementation of integer square root.                                                      │
 │    function sqrt_bitwise(n: u32) -> u32 {                                                            │
-│        <b>let res: u32 = 0u32;</b>                                                                          │
+│        <b>let res: u32 = 0u32;</b>                                                                   │
 │        // Iterate over all 32 bits from most significant to least significant                        │
 │        for inv_shift: u8 in 0u8..32u8 {                                                              │
 │            let shift: u8 = 31u8 - inv_shift;                                                         │
@@ -307,8 +306,7 @@ The Leo debugger also provides a user with a more sophisticated GUI, which can h
 ┌Command:──────────────────────────────────────────────────────────────────────────────────────────────┐
 │                                                                                                      │
 └──────────────────────────────────────────────────────────────────────────────────────────────────────┘
-</code>
-</pre>
+```
 
 # A More Complicated Example
 In the previous example, we use `leo debug` to evaluate simple transitions with strictly off-chain execution. The debugger can also be used to evaluate on-chain code.
@@ -335,7 +333,7 @@ Mapping: timelocks
   Metadata {locker: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, lockee: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px} -> 1u32
 Result: ()
 
-✔ <b>Command?</b> · let m: Metadata = Metadata { locker: self.caller, lockee: self.caller };
+✔ <b>Command?</b> · let m: Metadata = Metadata {'{'} locker: self.caller, lockee: self.caller };
 
 ✔ <b>Command?</b> · timelocks.get(m)
 Result: 1u32
