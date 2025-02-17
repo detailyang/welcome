@@ -330,7 +330,7 @@ Result: ()
 
 ✔ <b>Command?</b> · CheatCode::print_mapping(timelocks)
 Mapping: timelocks
-  Metadata {locker: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, lockee: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px} -> 1u32
+  Metadata {'{'}locker: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px, lockee: aleo1rhgdu77hgyqd3xjj8ucu3jj9r2krwz6mnzyd80gncr5fxcwlh5rsvzp9px} -> 1u32
 Result: ()
 
 ✔ <b>Command?</b> · let m: Metadata = Metadata {'{'} locker: self.caller, lockee: self.caller };
