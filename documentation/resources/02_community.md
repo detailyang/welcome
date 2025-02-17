@@ -12,11 +12,14 @@ sidebar_label: Community
 https://discord.gg/aleo
 
 
-## More Aleo Resources
+## More Resources
 If you're interested in learning more about Aleo:
 
 <!-- markdown-link-check-disable -->
 [//]: # (disabling markdown checks for twitter links)
+
+🐦 | X (Twitter) ~ @ProvableHQ ~ **https://twitter.com/ProvableHQ**
+
 🐦 | X (Twitter) ~ @AleoHQ ~ **https://twitter.com/AleoHQ**
 
 🤝 | Community X (Twitter) ~ @aleocommunity ~ **https://twitter.com/aleocommunity**
@@ -29,6 +32,8 @@ If you're interested in learning more about Aleo:
 
 🎮 | Leo Playground ~ **https://play.leo-lang.org/**
 
-🔎 | Aleo Block Explorer ~ **https://explorer.aleo.org/**
+✍️ | Provable Blog ~ **https://provable.com/blog**
 
-✍️ | Community Blog ~ **https://medium.com/@AleoHQ**
+🔎 | Block Explorer ~ **https://explorer.provable.com/**
+
+✍️ | Aleo Blog ~ **https://aleo.org/blog**

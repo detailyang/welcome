@@ -28,7 +28,7 @@ values={[
 <p>Download and install Leo with the official pre-built binaries.</p>
 <h3>For MacOS (Apple Silicon)</h3>
 <ul>
-<li><a href="https://github.com/AleoHQ/leo/releases/latest/download/leo.zip"><strong>Download Leo for Apple Silicon (MacOS)</strong></a></li>
+<li><a href="https://github.com/ProvableHQ/leo/releases/latest/download/leo.zip"><strong>Download Leo for Apple Silicon (MacOS)</strong></a></li>
 <li>This will download a <code>.zip</code> file containing a <strong>Unix Executable File</strong>.</li>
 </ul>
 <h4>Installation:</h4>
@@ -42,7 +42,7 @@ values={[
 </ol>
 <h3>For Other Platforms</h3>
 <ul>
-<li><a href="https://github.com/AleoHQ/leo/releases"><strong>Browse all Leo releases</strong></a></li>
+<li><a href="https://github.com/ProvableHQ/leo/releases"><strong>Browse all Leo releases</strong></a></li>
 </ul>
 </TabItem>
 <TabItem value="source">
@@ -58,7 +58,7 @@ values={[
 <pre><code>cargo --version</code></pre>
 <h3>2. Build Leo from Source Code</h3>
 <pre><code># Download the source code
-git clone https://github.com/AleoHQ/leo
+git clone https://github.com/ProvableHQ/leo
 cd leo
 # Build and install
 cargo install --path .</code></pre>
