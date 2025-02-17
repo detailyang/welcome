@@ -3,6 +3,8 @@ id: vote
 title: A Voting Program using Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/vote)**
+
 ## Summary
 
 `vote.leo` is a general vote program.

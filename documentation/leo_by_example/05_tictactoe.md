@@ -3,6 +3,8 @@ id: tictactoe
 title: A Game of Tic-Tac-Toe in Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/tictactoe)**
+
 ## Summary
 
 We can play a standard game of Tic-Tac-Toe in Leo. I think we all know what a tictactoe board looks like:

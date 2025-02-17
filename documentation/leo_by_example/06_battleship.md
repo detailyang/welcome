@@ -3,29 +3,37 @@ id: battleship
 title: A Game of Battleship in Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/battleship)**
+
 ## Contents
 
+- [Contents](#contents)
 - [Summary](#summary)
-- [Build](#how-to-build)
-- [Run](#how-to-run)
-  - [1. Initializing the Players](#1-initializing-the-players)
-  - [2: Player 1 Places Ships On The Board](#2-player-1-places-ships-on-the-board)
-  - [3: Player 1 Passes The Board To Player 2](#3-player-1-passes-the-board-to-player-2)
-  - [4: Player 2 Places Ships On The Board](#4-player-2-places-ships-on-the-board)
-  - [5: Passing The Board Back To Player 1](#5-passing-the-board-back-to-player-1)
-  - [6: Player 1 Takes The 1st Turn](#6-player-1-takes-the-1st-turn)
-  - [7: Player 2 Takes The 2nd Turn](#7-player-2-takes-the-2nd-turn)
-  - [8: Player 1 Takes The 3rd Turn](#8-player-1-takes-the-3rd-turn)
-  - [9: Player 2 Takes The 4th Turn](#9-player-2-takes-the-4th-turn)
-  - [10. Who Wins?](#10-who-wins)
+- [How to Run](#how-to-run)
+- [1. Initializing the Players](#1-initializing-the-players)
+- [2. Player 1 Places Ships on the Board](#2-player-1-places-ships-on-the-board)
+- [3: Player 1 Passes The Board To Player 2](#3-player-1-passes-the-board-to-player-2)
+- [4: Player 2 Places Ships On The Board](#4-player-2-places-ships-on-the-board)
+- [5: Passing The Board Back To Player 1](#5-passing-the-board-back-to-player-1)
+- [6: Player 1 Takes The 1st Turn](#6-player-1-takes-the-1st-turn)
+- [7: Player 2 Takes The 2nd Turn](#7-player-2-takes-the-2nd-turn)
+- [8: Player 1 Takes The 3rd Turn](#8-player-1-takes-the-3rd-turn)
+- [9: Player 2 Takes The 4th Turn](#9-player-2-takes-the-4th-turn)
+- [10. Who Wins?](#10-who-wins)
 - [ZK Battleship Privacy](#zk-battleship-privacy)
-- [Modeling the Boards and Ships](#modeling-the-board-and-ships)
-- [Validating a Single Ship](#validating-a-single-ship-at-a-time)
-- [Validating all Ships](#validating-all-ships-together-in-a-single-board)
-- [Sequencing Game State](#ensure-that-players-and-boards-cannot-swap-mid-game)
-- [Preventing Double Moves](#ensure-that-each-player-can-only-move-once-before-the-next-player-can-move)
-- [Ensuring Valid Moves](#enforce-constraints-on-valid-moves-and-force-the-player-to-give-their-opponent-information-about-their-opponents-previous-move-in-order-to-continue-playing)
-- [Winning](#winning-the-game)
+- [Modeling the board and ships](#modeling-the-board-and-ships)
+  - [Examples of valid board configurations:](#examples-of-valid-board-configurations)
+  - [Examples of invalid board configurations:](#examples-of-invalid-board-configurations)
+- [Validating a single ship at a time](#validating-a-single-ship-at-a-time)
+  - [Bit Counting](#bit-counting)
+  - [Adjacency Check](#adjacency-check)
+  - [Splitting a row or column](#splitting-a-row-or-column)
+  - [Ensuring a bitstring is a power of 2](#ensuring-a-bitstring-is-a-power-of-2)
+- [Validating all ships together in a single board](#validating-all-ships-together-in-a-single-board)
+- [Ensure that players and boards cannot swap mid-game](#ensure-that-players-and-boards-cannot-swap-mid-game)
+- [Ensure that each player can only move once before the next player can move](#ensure-that-each-player-can-only-move-once-before-the-next-player-can-move)
+- [Enforce constraints on valid moves, and force the player to give their opponent information about their opponent's previous move in order to continue playing](#enforce-constraints-on-valid-moves-and-force-the-player-to-give-their-opponent-information-about-their-opponents-previous-move-in-order-to-continue-playing)
+- [Winning the game](#winning-the-game)
 
 ## Summary
 

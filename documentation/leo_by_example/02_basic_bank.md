@@ -3,6 +3,8 @@ id: basic_bank
 title: A Basic Bank using Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/basic_bank)**
+
 ## Summary
 
 This program implements a bank that issues tokens to users and allows users to deposit tokens to accrue simple interest on their deposits.

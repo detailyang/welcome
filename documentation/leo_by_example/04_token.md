@@ -3,6 +3,8 @@ id: token
 title: A Custom Token in Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/token)**
+
 ## Summary
 
 A transparent & shielded custom token in Leo.

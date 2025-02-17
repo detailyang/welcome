@@ -410,7 +410,7 @@ let b: i8 = a.div_wrapped(-1i8); // -128i8
 
 #### Description
 
-Divides `first` by `second`, wrapping around at the boundary of the type, and storing the result in `destination`.
+Divides `first` by `second`, wrapping around at the boundary of the type, and storing the result in `destination`. Halts if `second` is zero.
 
 #### Supported Types
 
@@ -989,7 +989,7 @@ let b: i8 = a.rem_wrapped(-1i8); // 0i8
 ```
 
 #### Description
-Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the result in destination.
+Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the result in destination. Halts on division by zero.
 
 #### Supported Types
 

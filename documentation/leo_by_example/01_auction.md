@@ -3,6 +3,8 @@ id: auction
 title: A Private Auction using Leo
 ---
 
+**[Source Code](https://github.com/ProvableHQ/leo-examples/tree/main/auction)**
+
 ## Summary
 
 A first-price sealed-bid auction (or blind auction) is a type of auction in which each participant submits a bid without knowing the bids of the other participants.
