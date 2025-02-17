@@ -88,9 +88,6 @@ package/
 ```
 
 ## `leo build`
-:::info
-This command is deprecated as of Leo `v1.9.0`. It will be removed in a future release.
-:::
 To compile your program into Aleo Instructions and verify that it builds properly, run:
 ```bash
 leo build

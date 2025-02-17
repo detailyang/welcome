@@ -38,7 +38,7 @@ The Leo CLI provides a suite of commands to make programming in Leo easy.
 
 - [**leo example**](./leo/05_commands.md#leo-example)
 - [**leo new**](./leo/05_commands.md#leo-new)
-- [**leo build (deprecated)**](./leo/05_commands.md#leo-build)
+- [**leo build**](./leo/05_commands.md#leo-build)
 - [**leo run**](./leo/05_commands.md#leo-run)
 - [**leo execute**](./leo/05_commands.md#leo-execute)
 - [**leo clean**](./leo/05_commands.md#leo-clean)
