@@ -24,9 +24,7 @@ It abstracts the complexities of zero-knowledge cryptography, enabling developer
 
 - **Testing.** The testing ecosystem for Leo programs.
 
-- **Recipies.** Programming patterns you should keep in your toolbox.
-
-- **Concepts.** Build your mental model of Leo and the underlying programming paradigm.
+- **Guides.** Deepen your understanding of Leo and Aleo.
 
 - **Resources.** How to get involved with the community and supplemental material.
 

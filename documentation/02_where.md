@@ -8,12 +8,12 @@ While a deep dive through the Leo documentation is a useful exercise, we realize
 
 ## Roadmap
 
-- If you're brand new to Leo, go to **Getting Started** and make your way through **Hello, Leo**.
+- If you're brand new to Leo, go to **Getting Started** and make your way through [**Hello, Leo**](./getting_started/03_hello.md).
 
 - If you're designing a dApp, we recommend checking out **Leo By Example** for a reference.
 
-- If you're interested in advanced concepts, check out **Concepts** and **Recipes**. Be sure to check out the **Core Aleo Concepts**.
+- If you're interested in advanced concepts, check out [**Guides**](./guides/00_overview.md) and [**Recipes**](./recipes/00_overview.md). Also be sure to check out the [**Core Aleo Concepts**](https://developer.aleo.org/references/faqs).
 
-- If you're deploying or running your programs, **CLI** will be helpful.
+- If you're deploying or running your programs, [**CLI**](./cli/00_overview.md) will be helpful.
 
 
