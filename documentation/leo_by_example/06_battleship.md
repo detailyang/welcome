@@ -37,6 +37,8 @@ title: A Game of Battleship in Leo
 
 ## Summary
 
+This Battleship implementation showcases a well-designed application within Leo’s current constraints. However, some aspects—especially the bit manipulation—might seem complex at first glance. To set expectations, this is a more advanced example due to the way the board is encoded and manipulated. Planned improvements to Leo could make implementations like this much simpler in the future.
+
 Battleship is a game where two players lay their ships into secret configurations on their respective 8x8 grids,
 and then take turns firing upon each other's board.
 The game ends when one player has sunk all of the other player's ships.
@@ -511,7 +513,7 @@ Broadly speaking, we can follow this general strategy:
 
 ## Modeling the board and ships
 
-Most battleship representations in programs use a 64 character string or an array of arrays (8 arrays of 8 elements each) to model the board state. Unfortunately, Aleo instructions don't represent strings well yet, nor can we use for or while loops. Luckily for us, Aleo has the unsigned 64 bit integer type, or u64. To represent every space on a battleship board, from top left to bottom right, we can use each bit in a u64. For example, an empty board would be:
+Most battleship representations in programs use a 64 character string or an array of arrays (8 arrays of 8 elements each) to model the board state. Unfortunately, Leo language don't represent strings well yet, nor can we use for or while loops. Luckily for us, Aleo has the unsigned 64 bit integer type, or u64. To represent every space on a battleship board, from top left to bottom right, we can use each bit in a u64. For example, an empty board would be:
 0u64 =
 ```
 0 0 0 0 0 0 0 0  
