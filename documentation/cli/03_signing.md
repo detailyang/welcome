@@ -8,7 +8,7 @@ In addition to creating accounts, `leo account` can be used to sign data and ver
 
 ## `leo account sign`
 
-The `leo account sign` command enables developers and users to create cryptographic signatures using an Aleo private key. These signatures can be verified within leo using the [`signature::verify`](../leo/04_operators.md#signatureverify) function or with the `leo account verify` command.
+The `leo account sign` command enables developers and users to create cryptographic signatures using an Aleo private key. These signatures can be verified within leo using the [`signature::verify`](../language/04_operators.md#signatureverify) function or with the `leo account verify` command.
 
 To generate a signature for Leo and Aleo values, run the following:
 
