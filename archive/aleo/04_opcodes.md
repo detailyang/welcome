@@ -39,10 +39,10 @@ The following lists show the standard and cryptographic opcodes supported by Ale
 | [nor](#nor)                  | `Boolean` NOR operation                               |
 | [not](#not)                  | NOT operation                                         |
 | [or](#or)                    | OR Operation                                          |
-| [position](#position)        | The position command                                  |
+| [position](#position)        | Mark a possible branch target                         |
 | [pow](#pow)                  | Exponentiation operation                              |
 | [pow.w](#poww)               | Wrapping exponentiation operation                     |
-| [rand.chacha](#randchacha)   | Generates a random value within the `finalize` scope. |
+| [rand.chacha](#randchacha)   | Generates a random value                              |
 | [rem](#rem)                  | Remainder operation                                   |
 | [rem.w](#remw)               | Wrapping remainder operation                          |
 | [shl](#shl)                  | Shift left operation                                  |
@@ -94,7 +94,7 @@ The following is the specification for each opcode in the Aleo Virtual Machine (
 
 Computes the absolute value of the input, checking for overflow, storing the result in the destination register.
 
-For integer types, a constraint is added to check for underflow. For cases where wrapping semantics are needed, see the [abs.w](#abs.w) instruction. This underflow happens when the input is the minimum value of a signed integer type. For example, `abs -128i8` would result in underflow, since `128` cannot be represented as an `i8`.
+For integer types, a constraint is added to check for overflow. For cases where wrapping semantics are needed, see the [abs.w](#abs.w) instruction. This overflow happens when the input is the minimum value of a signed integer type. For example, `abs -128i8` would result in overflow, since `128` cannot be represented as an `i8`.
 
 #### Supported Types
 
@@ -114,7 +114,7 @@ For integer types, a constraint is added to check for underflow. For cases where
 
 #### Description
 
-Compute the absolute value of the input, wrapping around at the boundary of the type, and storing the result in the destination register.
+Compute the absolute value of the input, wrapping around at the boundary of the type, and storing the result in the destination register. `abs.w -128i8` executes normally, the result is 0 (`abs -128i8` run was interrupted).
 
 #### Supported Types
 
@@ -1772,22 +1772,6 @@ Shifts `first` right by `second` bits, wrapping around at the boundary of the ty
 
 ***
 
-### `square`
-
-[Back to Top](#table-of-standard-opcodes)
-
-#### Description
-
-Squares the input, storing the outcome in `destination`.
-
-#### Supported Types
-
-| Input   | Destination |
-|---------|-------------|
-| `Field` | `Field`     |
-
-***
-
 ### `sqrt`
 
 [Back to Top](#table-of-standard-opcodes)
@@ -1804,6 +1788,21 @@ Computes the square root of the input, storing the outcome in `destination`. Hal
 
 ***
 
+### `square`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Squares the input, storing the outcome in `destination`.
+
+#### Supported Types
+
+| Input   | Destination |
+|---------|-------------|
+| `Field` | `Field`     |
+
+***
 
 ### `sub`
 

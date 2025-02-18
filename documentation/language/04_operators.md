@@ -846,6 +846,8 @@ Takes the modulo of `first` with respect to `second`, storing the result in `des
 
 The semantics of this operation are consistent with the mathematical definition of modulo operation.
 
+`mod` ensures the remainder has the same sign as the `second` operand. This differs from [`rem`](#rem), which follows truncated division and takes the sign of the `first` operand.
+
 #### Supported Types
 
 | First  | Second | Destination |
@@ -1121,12 +1123,19 @@ let b: u8 = 4u8.rem(2u8); // 0u8
 
 #### Description
 
-Computes the truncated remainder of `first` divided by `second`, storing the result in `destination`. Halts on division by zero.
+Computes the remainder of the division of the `first` operand by the `second`, storing the result in `destination` following truncated division rules:
 
+a and b refers to first and second respectively
 
-Note that execution will halt if the operation underflows.  This underflow happens when the associated division operation, [div](#div), underflows.
+`a % b = a - (a / b) * b`
+
+Here, `a` and `b` refer to the `first` and `second` operands, respectively
+
+Note that execution will halt if the operation underflows or divides by zero. This underflow happens when the associated division operation, [div](#div), underflows.
 
 For cases where wrapping semantics are needed for integer types, see the [rem_wrapped](#rem_wrapped) instruction.
+
+`rem` follows truncated division, meaning the remainder has the same sign as `a`. This differs from [mod](#mod), where the remainder matches the sign of `b`.
 
 #### Supported Types
 
@@ -1154,7 +1163,10 @@ let b: i8 = a.rem_wrapped(-1i8); // 0i8
 ```
 
 #### Description
-Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the result in destination. Halts on division by zero.
+Computes the remainder of the division of the `first` operand by the `second` following truncated division rules, storing the result in `destination`. Halts on division by zero.
+Unlike [`rem`](#rem), `rem_wrapped` is always defined and does not halt, even when [`div`](#div) would wrap around.
+
+Notably, `rem_wrapped` does not introduce wrapping itself but ensures the operation remains defined where `rem` would be undefined.
 
 #### Supported Types
 
@@ -2043,7 +2055,7 @@ let result: u128 = Keccak384::hash_to_u128(1field);
 
 #### Description
 
-Computes a Keccak384 hash on inputs of 256-bit chunks in `first`, storing the hash in `destination`.
+Computes a Keccak384 hash on inputs of 384-bit chunks in `first`, storing the hash in `destination`.
 The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128`, `i8`, `i16`, `i32`,`i64`,`i128`, `field`, `group`, or `scalar`) or `address` value, as specified via `hash_to_DESTINATION` at the end of the function.
 
 #### Supported Types
@@ -2051,7 +2063,7 @@ The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128
 | First     | Destination                                                                                               |
 |-----------|:----------------------------------------------------------------------------------------------------------|
 | `address` | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
-| `bool` | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
+| `bool`    | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `field`   | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `group`   | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `i8`      | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
@@ -2091,7 +2103,7 @@ let result: u128 = Keccak512::hash_to_u128(1field);
 
 #### Description
 
-Computes a Keccak512 hash on inputs of 256-bit chunks in `first`, storing the hash in `destination`.
+Computes a Keccak512 hash on inputs of 512-bit chunks in `first`, storing the hash in `destination`.
 The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128`, `i8`, `i16`, `i32`,`i64`,`i128`, `field`, `group`, or `scalar`) or `address` value, as specified via `hash_to_DESTINATION` at the end of the function.
 
 #### Supported Types
