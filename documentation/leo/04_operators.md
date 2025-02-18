@@ -998,7 +998,9 @@ let b: i8 = a.rem_wrapped(-1i8); // 0i8
 ```
 
 #### Description
-Computes the truncated remainder of `first` divided by `second`, wrapping around at the boundary of the type, and storing the result in destination.
+Computes the remainder of the division of the `first` operand by the `second` following truncated division rules, storing the result in `destination`. Unlike [`rem`](#rem), `rem_wrapped` is always defined and does not halt, even when [`div`](#div) would wrap around.
+
+Notably, `rem_wrapped` does not introduce wrapping itself but ensures the operation remains defined where `rem` would be undefined.
 
 #### Supported Types
 
