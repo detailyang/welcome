@@ -681,6 +681,8 @@ Takes the modulo of `first` with respect to `second`, storing the result in `des
 
 The semantics of this operation are consistent with the mathematical definition of modulo operation.
 
+`mod` ensures the remainder has the same sign as the `second` operand. This differs from [`rem`](#rem), which follows truncated division and takes the sign of the `first` operand.
+
 #### Supported Types
 
 | First  | Second | Destination |
@@ -956,12 +958,19 @@ let b: u8 = 4u8.rem(2u8); // 0u8
 
 #### Description
 
-Computes the truncated remainder of `first` divided by `second`, storing the result in `destination`. Halts on division by zero.
+Computes the remainder of the division of the `first` operand by the `second`, storing the result in `destination` following truncated division rules:
 
+a and b refers to first and second respectively
+
+`a % b = a - (a / b) * b`
+
+Here, `a` and `b` refer to the `first` and `second` operands, respectively
 
 Note that execution will halt if the operation underflows.  This underflow happens when the associated division operation, [div](#div), underflows.
 
 For cases where wrapping semantics are needed for integer types, see the [rem_wrapped](#rem_wrapped) instruction.
+
+`rem` follows truncated division, meaning the remainder has the same sign as `a`. This differs from [mod](#mod), where the remainder matches the sign of `b`.
 
 #### Supported Types
 
