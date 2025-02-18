@@ -4,6 +4,8 @@ title: Sign and Verify
 sidebar_label: Sign and Verify 
 ---
 
+In addition to creating accounts, `leo account` can be used to sign data and verify signatures. This can be useful for a particular class of applications that rely on signed data as input.
+
 ## `leo account sign`
 
 The `leo account sign` command enables developers and users to create cryptographic signatures using an Aleo private key. These signatures can be verified within leo using the [`signature::verify`](../leo/04_operators.md#signatureverify) function or with the `leo account verify` command.
