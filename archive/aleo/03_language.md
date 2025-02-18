@@ -94,7 +94,7 @@ function main:
 ### Signatures
 
 Aleo uses a Schnorr signatures scheme to sign messages with an Aleo private key.
-Signatures can be verified in Aleo instructions using the [`sign.verify`](https://developer.aleo.org/guides/aleo/opcodes.md#signverify) instruction.
+Signatures can be verified in Aleo instructions using the [`sign.verify`](https://developer.aleo.org/guides/aleo/opcodes#signverify) instruction.
 
 ```aleo
 sign.verify sign069ju4e8s66unu25celqycvsv3k9chdyz4n4sy62tx6wxj0u25vqp58hgu9hwyqc63qzxvjwesf2wz0krcvvw9kd9x0rsk4lwqn2acqhp9v0pdkhx6gvkanuuwratqmxa3du7l43c05253hhed9eg6ppzzfnjt06fpzp6msekdjxd36smjltndmxjndvv9x2uecsgngcwsc2qkns4afd r1 r2 into r3;
@@ -610,7 +610,7 @@ hash.psd4 ...;
 hash.psd8 ...;
 ```
 
-Checkout the [Aleo Instructions opcodes](https://developer.aleo.org/guides/aleo/opcodes.md) for a full list of supported hashing algorithms.
+Checkout the [Aleo Instructions opcodes](https://developer.aleo.org/guides/aleo/opcodes) for a full list of supported hashing algorithms.
 
 #### Commit
 
@@ -628,7 +628,7 @@ commit.ped64 ...;
 commit.ped128 ...;
 ```
 
-Checkout the [Aleo Instructions opcodes](https://developer.aleo.org/guides/aleo/opcodes.md) for a full list of supported commitment algorithms.
+Checkout the [Aleo Instructions opcodes](https://developer.aleo.org/guides/aleo/opcodes) for a full list of supported commitment algorithms.
 
 #### position, branch.eq, branch.neq
 
