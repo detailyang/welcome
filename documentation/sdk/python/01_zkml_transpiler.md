@@ -30,7 +30,7 @@ Ensure you have 3.9.6 or newer installed.
    ```bash
    python3 --version
    ```
-   - If not installed, follow the instructions [here](https://wiki.python.org/moin/BeginnersGuide/Download).
+   - If not installed, follow the instructions [here](https://www.python.org/about/).
 
 #### Leo
 Ensure you have Leo version 1.9.3 or newer installed.
@@ -42,7 +42,7 @@ Ensure you have Leo version 1.9.3 or newer installed.
    ```bash
    leo update
    ```
-   - Installation guide: [Leo Installation](./../../leo/01_installation.md)
+   - Installation guide: [Leo Installation](./../../getting_started/01_installation.md)
 
 ### Installation
 
