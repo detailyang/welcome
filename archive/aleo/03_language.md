@@ -238,10 +238,10 @@ A struct is a data type declared as `struct {name}:`.
 Structs contain component declarations `{name} as {type}`.
 
 ```aleo showLineNumbers
-struct rgb:
-    a0 as u32;
-    a1 as u32;
-    a2 as u32;
+struct color_rgb:
+    red as u32;
+    green as u32;
+    blue as u32;
 ```
 
 To instantiate a `struct` in a program use the `cast` instruction.
@@ -251,7 +251,7 @@ function new_rgb:
     input r0 as u32.private;
     input r1 as u32.private;
     input r2 as u32.private;
-    cast r0 r1 r2 into r3 as rgb;
+    cast r0 r1 r2 into r3 as color_rgb;
     output r3;
 ```
 
