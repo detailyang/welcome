@@ -30,7 +30,9 @@ Ensure you have 3.9.6 or newer installed.
    ```bash
    python3 --version
    ```
+<!--markdown-link-check-disable -->
    - If not installed, follow the instructions [here](https://wiki.python.org/moin/BeginnersGuide/Download).
+<!--markdown-link-check-enable -->
 
 #### Leo
 Ensure you have Leo version 1.9.3 or newer installed.
