@@ -238,7 +238,7 @@ A struct is a data type declared as `struct {name}:`.
 Structs contain component declarations `{name} as {type}`.
 
 ```aleo showLineNumbers
-struct array3:
+struct rgb:
     a0 as u32;
     a1 as u32;
     a2 as u32;
@@ -247,11 +247,11 @@ struct array3:
 To instantiate a `struct` in a program use the `cast` instruction.
 
 ```aleo showLineNumbers
-function new_array3:
+function new_rgb:
     input r0 as u32.private;
     input r1 as u32.private;
     input r2 as u32.private;
-    cast r0 r1 r2 into r3 as array3;
+    cast r0 r1 r2 into r3 as rgb;
     output r3;
 ```
 
