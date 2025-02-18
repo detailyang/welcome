@@ -42,7 +42,7 @@ Ensure you have Leo version 1.9.3 or newer installed.
    ```bash
    leo update
    ```
-   - Installation guide: [Leo Installation](./../../leo/01_installation.md)
+   - Installation guide: [Leo Installation](./../../getting_started/01_installation.md)
 
 ### Installation
 

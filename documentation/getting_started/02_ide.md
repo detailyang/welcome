@@ -8,7 +8,7 @@ Developers can choose from a wide variety of development environment. Each
 
 ## Leo Playground
 
-[Leo Playground](play.leo-lang.org) is a web-based IDE that is designed to allow developers to develop, deploy, and execute programs all in the browser! It comes with an editor, Github integrations, and a number of utilities to manage programs and interface with the network. 
+[Leo Playground](https://play.leo-lang.org) is a web-based IDE that is designed to allow developers to develop, deploy, and execute programs all in the browser! It comes with an editor, Github integrations, and a number of utilities to manage programs and interface with the network. 
 
 ![Leo Playground](./../img/leo-playground.png)
 
