@@ -260,7 +260,7 @@ let b: i8 = a.abs(); // 1i8
 
 Computes the absolute value of the input, checking for overflow, storing the result in the destination.
 
-Note that execution will halt if the operation overflows/underflows. For cases where wrapping semantics are needed, see the [abs_wrapped](#abs_wrapped) instruction. This underflow happens when the input is the minimum value of a signed integer type. For example, `abs -128i8` would result in underflow, since `128` cannot be represented as an `i8`.
+Note that execution will halt if the operation overflows. For cases where wrapping semantics are needed, see the [abs_wrapped](#abs_wrapped) instruction. This overflow happens when the input is the minimum value of a signed integer type. For example, `abs -128i8` would result in overflow, since `128` cannot be represented as an `i8`.
 
 #### Supported Types
 
