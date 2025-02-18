@@ -4,13 +4,6 @@ title: The Leo Programming Language
 sidebar_label: Leo
 ---
 
-:::tip
-# What's new on Leo?
-### [**📦 Releases**](./https://github.com/ProvableHQ/leo/releases) - Stay up to date with the latest Leo releases.
-### [**🤝 Leo Core Developers Call**](./resouces/leocoredevs.md) - Collaborate with the Leo development team and ecosystem on the future of Leo.
-### [**⚛️ Create Leo App**](./sdk/create-leo-app/01_create_leo_app.md) - A full stack application written in Typescript using Leo and React.
-:::
-
 Leo is an open-source, statically-typed, imperative programming language designed for building private applications on the Aleo blockchain. 
 It abstracts the complexities of zero-knowledge cryptography, enabling developers to create secure, privacy-preserving applications while abstracting technical complexities.
 
