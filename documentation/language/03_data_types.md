@@ -250,7 +250,7 @@ struct array3 {
 
 ### Record
 
-A [record](../concepts/02_records.md) data type is declared as `record {name} {}`.
+A [record](https://developer.aleo.org/concepts/fundamentals/records) data type is declared as `record {name} {}`.
 Records contain component declarations `{visibility} {name}: {type},`.
 
 A visibility can be either `constant`, `public`, or `private`.

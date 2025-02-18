@@ -170,7 +170,7 @@ let b: u32 = ChaCha::rand_u32();
 
 
 The following lists show the standard and cryptographic operators supported by Leo.
-The Leo operators compile down to [Aleo instructions opcodes](../alehttps://developer.aleo.org/guides/aleo/opcodes.md) executable by the Aleo Virtual Machine (AVM).
+The Leo operators compile down to [Aleo instructions opcodes](https://developer.aleo.org/guides/aleo/opcodes.md) executable by the Aleo Virtual Machine (AVM).
 
 ## Table of Standard Operators
 | Name                        | Description                         |
