@@ -1,7 +1,6 @@
 ---
 id: new
-title: Latest in Leo
-sidebar_label: What's New?
+sidebar_label: What's new?
 ---
 
 :::tip
