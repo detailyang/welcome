@@ -4,21 +4,11 @@ title: Curated Resources
 sidebar_label: Curated 
 ---
 
-## 1. The Aleo Workshop Repository
-
-📜 A starter guide to build applications on Aleo 📜
-
-https://github.com/ProvableHQ/workshop
-
-## The Awesome Aleo Repository
-
-🏎️ A curated list of Aleo & Leo code and resources 🏎️
-
-https://github.com/howardwu/awesome-aleo
+There's a lot more on Leo and Aleo out there! Here are some thing you might find interesting.
 
 ## The Community
 
-💬 Share what you are building in the #aleo-language channel 💬
+💬 Share what you are building in the #leo-language channel 💬
 
 https://discord.gg/aleo
 
@@ -41,15 +31,15 @@ If you're interested in learning more about Aleo:
 
 🐙 | GitHub ~ **https://github.com/ProvableHQ**
 
-📄 | Developer Documentation ~ **https://docs.leo-lang.org/**
+📜 | Leo Workshops ~ **https://github.com/ProvableHQ/workshop**
 
-🎮 | Leo Playground ~ **https://play.leo-lang.org/**
+🏎️ | Awesome Aleo ~ **https://github.com/AleoNet/awesome-aleo**
 
 ✍️ | Provable Blog ~ **https://provable.com/blog**
 
-🔎 | Block Explorer ~ **https://explorer.provable.com/**
-
 ✍️ | Aleo Blog ~ **https://aleo.org/blog**
+
+📜 | Leo Whitepaper ~ **https://eprint.iacr.org/2021/651.pdf**
 
 
 ## Talks and Videos

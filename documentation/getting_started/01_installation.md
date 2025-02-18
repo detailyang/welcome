@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 
 There are a number of ways to install Leo, depending on your platform and preferences. Take your pick!
 
+If you'd like to try Leo without installing it locally on your machine, check out the [Leo Playground](./02_ide.md#leo-playground).
+
 <Tabs defaultValue="cargo"
 values={[
   { label: 'Cargo', value: 'cargo' },
@@ -68,13 +70,3 @@ cargo install --path .</code></pre>
   </TabItem>
 </Tabs>
 
------
-
-## IDE Syntax Highlighting
-
-Aleo maintains syntax highlighting implementations across different platforms.
-If you do not see your favorite editor on this list, please reach out on [GitHub](https://github.com/ProvableHQ/welcome/issues/new).
-
-1. [Visual Studio Code](06_tooling.md#vs-code)
-2. [Sublime Text](06_tooling.md#sublime-text)
-3. [IntelliJ](06_tooling.md#intellij)
