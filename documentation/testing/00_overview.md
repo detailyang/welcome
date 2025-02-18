@@ -11,9 +11,7 @@ Once deployed, an application lives on the ledger forever. Consequently, it's im
 
 - [**Running Devnets**](./03_devnet.md) - Deploy and execute on a local devnet.
 
-- [**Amareleo**](./04_amareleo.md) - Coming soon!
-
-- [**doko.js**](./05_doko.md) - Coming soon!
+- [**Other Tools**](./04_other.md) - Tools and methodologies developer by the open-source Aleo community.
 
 
 ## Faucets
