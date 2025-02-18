@@ -1771,22 +1771,6 @@ Shifts `first` right by `second` bits, wrapping around at the boundary of the ty
 
 ***
 
-### `square`
-
-[Back to Top](#table-of-standard-opcodes)
-
-#### Description
-
-Squares the input, storing the outcome in `destination`.
-
-#### Supported Types
-
-| Input   | Destination |
-|---------|-------------|
-| `Field` | `Field`     |
-
-***
-
 ### `sqrt`
 
 [Back to Top](#table-of-standard-opcodes)
@@ -1803,6 +1787,21 @@ Computes the square root of the input, storing the outcome in `destination`.
 
 ***
 
+### `square`
+
+[Back to Top](#table-of-standard-opcodes)
+
+#### Description
+
+Squares the input, storing the outcome in `destination`.
+
+#### Supported Types
+
+| Input   | Destination |
+|---------|-------------|
+| `Field` | `Field`     |
+
+***
 
 ### `sub`
 
