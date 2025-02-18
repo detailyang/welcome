@@ -1878,7 +1878,7 @@ let result: u128 = Keccak384::hash_to_u128(1field);
 
 #### Description
 
-Computes a Keccak384 hash on inputs of 256-bit chunks in `first`, storing the hash in `destination`.
+Computes a Keccak384 hash on inputs of 384-bit chunks in `first`, storing the hash in `destination`.
 The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128`, `i8`, `i16`, `i32`,`i64`,`i128`, `field`, `group`, or `scalar`) or `address` value, as specified via `hash_to_DESTINATION` at the end of the function.
 
 #### Supported Types
@@ -1886,7 +1886,7 @@ The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128
 | First     | Destination                                                                                               |
 |-----------|:----------------------------------------------------------------------------------------------------------|
 | `address` | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
-| `bool` | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
+| `bool`    | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `field`   | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `group`   | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
 | `i8`      | `address`, `field`, `group`, `scalar`, `i8`, `i16`, `i32`,`i64`,`i128`, `u8`, `u16`, `u32`, `u64`, `u128` |
@@ -1926,7 +1926,7 @@ let result: u128 = Keccak512::hash_to_u128(1field);
 
 #### Description
 
-Computes a Keccak512 hash on inputs of 256-bit chunks in `first`, storing the hash in `destination`.
+Computes a Keccak512 hash on inputs of 512-bit chunks in `first`, storing the hash in `destination`.
 The produced hash will always be an arithmetic (`u8`, `u16`, `u32`, `u64`, `u128`, `i8`, `i16`, `i32`,`i64`,`i128`, `field`, `group`, or `scalar`) or `address` value, as specified via `hash_to_DESTINATION` at the end of the function.
 
 #### Supported Types
