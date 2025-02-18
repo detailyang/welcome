@@ -181,12 +181,12 @@ Registers are the places where you store data to then be able to modify it.
 
 ### 4.2 Structs
 
-Structs are user-defined data structures. They are very much like traditional structs in conventional programming languages. You can store structs into registers, like with any other Aleo data types.
+Structs are user-defined data structures. They are very much like traditional structs in conventional programming languages. You can store structs into registers, just like any other Aleo data types.
 
-For example, let's build a struct representing a fixed-size array of 3 elements. Add this at the bottom of the `main.aleo` file:
+For example, let's build a struct representing a fixed-size sequence of 3 elements. Add this at the bottom of the `main.aleo` file:
 
 ```aleo showLineNumbers
-struct array3:
+struct sequence3:
     a0 as u32;
     a1 as u32;
     a2 as u32;
