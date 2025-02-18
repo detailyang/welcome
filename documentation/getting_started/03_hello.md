@@ -4,6 +4,8 @@ title: Hello, Leo
 sidebar_label: Hello, Leo
 ---
 
+## Initialize the project
+
 Use the Leo Command Line Interface (CLI) to create a new project.
 In your terminal, run:
 ```bash
@@ -18,17 +20,19 @@ hello/
 ├── .gitignore # A default `.gitignore` file for Leo projects
 ├── .env # The environment, containing the `NETWORK` and `PRIVATE_KEY` variables.
 ├── program.json # The manifest for the Leo project
-├── README.md # The project description and documentation
-├── build/ # The build directory, containing compiled code 
 └── src/
   └── main.leo # The Leo source code
 ```
 
-When you run ⁠`leo run main <inputs>`⁠, Leo automatically creates an ⁠`output/`⁠ folder in the project directory.
+## Build and Run 
 
-Let's run the project.
+Now let's compile the program.
+```
+leo build
+```
+ 
+On invoking the build command, Leo automatically creates a `/build⁠` and `output/`⁠ folder in the project directory. The compiled code is contained in the `build` directory. `output` is used to stored intermediate artificats from compilation. 
 
-## Zero Knowledge in One Line
 
 The `leo run` command will compile and run the program.
 In your terminal, run:
@@ -48,18 +52,22 @@ Leo Compiled 'main.leo' into Aleo instructions
 Leo ✅ Finished 'hello.aleo/main' (in "/hello/build")
 ```
 
-Congratulations! You've just run your first Leo program.
+Congratulations! You've ran your first Leo program.
 
-Let's go through the file syntax of the program we just executed.
+## Unpacking the Project
 
+Let's go through the project.
+
+### The Manifest
 
 **program.json** is the Leo manifest file that configures our package.
 ```json title="program.json"
 {
-    "program": "hello.aleo",
-    "version": "0.0.0",
-    "description": "",
-    "license": "MIT"
+  "program": "hello.aleo",
+  "version": "0.1.0",
+  "description": "",
+  "license": "MIT",
+  "dependencies": null
 }
 ```
 
@@ -74,7 +82,9 @@ All files in the current package will be compiled with the specified Leo `versio
     "version": "0.0.0",
 ```
 
-## Syntax to Circuits
+Dependencies will be added to the field of the same name, as they are added. The dependencies are also pegged in the **leo.lock** file.
+
+### The Code
 Open up **src/main.leo**.
 The **main.leo** file is the entry point of a Leo project. It often contains a function named `main`.
 Let's break down the structure of a Leo file.
@@ -88,13 +98,13 @@ program hello.aleo {
 }
 ```
 
-`program hello.aleo {` defines the name of the [program](03_language.md#program-scope) inside the Leo file.
+`program hello.aleo {` defines the name of the [program](./../language/02_structure.md#program-scope) inside the Leo file.
 The program ID must match the `program.json` manifest file.
-The keyword `transition` indicates a [transition](03_language.md#transition-function) function definition in Leo.
+
+The keyword `transition` indicates a [transition](./../language/02_structure.md#transition-function) function definition in Leo.
 The `main` transition takes an input `a` with type `u32` and `public` visibility, and an input `b` with type `u32` and `private` visibility (by default).
-The program returns one result with type `u32`.
-The transition function body is enclosed in curly braces `{ }`. It is a common convention in Leo to place the opening curly
-brace on the same line as the function definition, adding one space in between.
+The transition returns one result with type `u32`.
+The transition body is enclosed in curly braces `{ }`. 
 ```leo
 transition main(public a: u32, b: u32) -> u32 {
 ```
@@ -105,7 +115,7 @@ Leo's compiler will check that the types of `a` and `b` are equal and that the r
 let c: u32 = a + b;
 ```
 
-:::info
+:::note
 Leo is designed to detect many errors at compile time, via statically checked strong types.
 Try changing the type of any variable and seeing what Leo recommends with helpful error messages.
 :::
@@ -161,10 +171,12 @@ leo execute main 1u32 2u32
  Leo ✅ Executed 'hello.aleo/main' (in "/hello/build")
 ```
 
-The `leo execute` command will attempt to verify a proof only if all previous steps completed successfully. Under the hood, the Leo [CLI](05_commands.md) will check for existing `.prover` file to constructing proof, the `.verifier` file to verify proof and the `.avm` file containing the program's bytecode in the **build/build** directory before running each command. This ensures that we don't run unnecessary commands.
+The `leo execute` command will attempt to verify a proof only if all previous steps completed successfully. Under the hood, the Leo [CLI](./../cli/00_overview.md) will check for existing `.prover` file to constructing proof, the `.verifier` file to verify proof and the `.avm` file containing the program's bytecode in the **build/build** directory before running each command. This ensures that we don't run unnecessary commands.
+
+You'll notice that running `leo execute` produces a JSON object. This is a [`Transaction`](https://developer.aleo.org/concepts/fundamentals/transactions) that can be broadcast to the Aleo network.
 
 ## Next Steps
 
-To learn more about the Leo language and its syntax, start [here](03_language.md).
+To learn more about the Leo language and its syntax, start [here](./../language/00_overview.md).
 
-To learn more about how to use the Leo CLI, start [here](05_commands.md).
+To learn more about how to use the Leo CLI, start [here](./../cli/00_overview.md).
