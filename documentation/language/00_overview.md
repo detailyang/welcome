@@ -20,14 +20,3 @@ explicitly stated**.
 Expressions in Leo are always **passed by value**, which means their values are always copied when they are used as
 function inputs or in right sides of assignments.
 
-## Deprecated Syntax
-
-#### Increment and Decrement
-
-`increment()` and `decrement()` functions are deprecated as of Leo v1.7.0.
-Please use the [`Mapping::set()`](#set) function instead.
-
-#### Finalize 
-
-`finalize` and the associated programming model is deprecated as of Leo v2.0.0.
-Please use an [`async function`](#async-function) instead.
